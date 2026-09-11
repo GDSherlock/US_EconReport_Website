@@ -2,7 +2,7 @@ name: Deploy research to GitHub Pages
 
 on:
   push:
-    branches: [deploy]
+    branches: [update]
   workflow_dispatch:
 
 permissions:
