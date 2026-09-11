@@ -11,6 +11,15 @@ test('latest report is selected by date across years, independently of input ord
 test('drafts never become home or archive entries', () => {
   assert.deepEqual(publishedReports([report('2026-09-11'), report('2026-09-18', true)]).map(r => r.data.date), ['2026-09-11']);
 });
+test('backfilling older research preserves the homepage and adds archive entries', () => {
+  const latest = report('2026-09-11');
+  const backfill = { ...report('2026-09-05'), id: 'uploaded-last', modifiedAt: '2026-09-20' };
+  for (const entries of [[latest, backfill], [backfill, latest]]) {
+    const published = publishedReports(entries);
+    assert.equal(published[0], latest);
+    assert.deepEqual(published.map(r => r.data.date), ['2026-09-11', '2026-09-05']);
+  }
+});
 test('date must be a real ISO calendar date', () => {
   for (const date of ['2026-02-29', '2026-02-31', '2026-13-01', '09/11/2026', '2026-9-11']) assert.equal(isISODate(date), false);
   assert.equal(isISODate('2024-02-29'), true);
