@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+import { href } from '../lib/reports';
+interface Props { title: string; description: string; active?: 'latest' | 'archive'; canonicalPath?: string; }
+const { title, description, active, canonicalPath } = Astro.props;
+const canonical = Astro.site ? new URL(canonicalPath ?? Astro.url.pathname, Astro.site) : undefined;
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#faf9f6" />
+    <title>{title} · 观澜</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} · 观澜`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="zh_CN" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <link rel="icon" type="image/svg+xml" href={href('favicon.svg')} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳至正文</a>
+    <header class="site-header wrap">
+      <a class="brand" href={href()} aria-label="观澜，最新周报首页">
+        <span class="brand-name">观澜<span class="brand-dot">.</span></span>
+        <span class="brand-caption">MACRO<br />RESEARCH</span>
+      </a>
+      <nav class="site-nav" aria-label="网站导航">
+        <a href={href()} aria-current={active === 'latest' ? 'page' : undefined}>最新周报</a>
+        <a href={href('archive/')} aria-current={active === 'archive' ? 'page' : undefined}>研究归档 <span class="nav-en">Archive</span></a>
+      </nav>
+    </header>
+    <slot />
+    <footer class="site-footer wrap">
+      <div><a class="footer-brand" href={href()}>观澜</a><span class="footer-caption">观察宏观，理解变化。</span></div>
+      <span>美国宏观周报 <span class="footer-divider">/</span> 每周研究记录</span>
+    </footer>
+  </body>
+</html>

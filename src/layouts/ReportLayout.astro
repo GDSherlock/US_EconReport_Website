@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import Takeaways from '../components/Takeaways.astro';
+import { href, formatDate, readingMinutes } from '../lib/reports';
+interface Props { report: CollectionEntry<'reports'>; isHome?: boolean; }
+const { report, isHome = false } = Astro.props;
+const { Content, headings } = await render(report);
+const { data } = report;
+const [firstLine, ...rest] = data.title.split('，');
+---
+<BaseLayout title={data.title} description={data.description} active={isHome ? 'latest' : undefined} canonicalPath={href(`report/${data.date}/`)}>
+  <main id="main" class="report-main wrap">
+    <header class="report-header">
+      <div class="report-meta"><span class="report-category">美国宏观周报</span><span class="meta-slash">/</span><time datetime={data.date}>{formatDate(data.date)}</time><span class="reading-time">约 {readingMinutes(report.body ?? '')} 分钟阅读</span></div>
+      <h1>{rest.length ? <>{firstLine}，<br />{rest.join('，')}</> : data.title}</h1>
+      <p class="report-deck">{data.description}</p>
+      <div class="report-header-bottom"><span>流动性 <span>·</span> 经济基本面 <span>·</span> 货币政策</span><a href="#key-takeaways">阅读本期 <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v11M3 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.25"/></svg></a></div>
+    </header>
+    <div class="reading-layout">
+      <TableOfContents headings={headings} />
+      <article class="report-article" aria-label={`${formatDate(data.date)}美国宏观周报`}>
+        <Takeaways items={data.takeaways} />
+        <div class="prose"><Content /></div>
+        {data.focus && <section class="next-focus" aria-labelledby="next-focus-title"><h2 id="next-focus-title">接下来关注</h2><p>{data.focus}</p></section>}
+        <div class="report-end"><span>本期完</span><span class="end-rule"></span><time datetime={data.date}>{data.date.replaceAll('-', '.')}</time></div>
+        <nav class="report-bottom-nav" aria-label="报告阅读导航"><a href={href('archive/')}>浏览研究归档 <span aria-hidden="true">↗</span></a><a href="#main">返回顶部 ↑</a></nav>
+      </article>
+    </div>
+  </main>
+</BaseLayout>

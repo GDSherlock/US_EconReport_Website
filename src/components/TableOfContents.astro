@@ -1,0 +1,56 @@
+---
+import type { MarkdownHeading } from 'astro';
+interface Props { headings: MarkdownHeading[]; }
+const { headings } = Astro.props;
+const chapters = headings.filter(heading => heading.depth === 2);
+---
+<aside class="toc-rail">
+  <details class="toc" open>
+    <summary><span>本期目录</span><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.25" /></svg></summary>
+    <nav aria-label="报告章节">
+      <a class="toc-link overview-link" href="#key-takeaways" data-section="key-takeaways"><span class="toc-number">—</span><span>本周核心判断</span></a>
+      {chapters.map((chapter, index) => (
+        <div class="toc-chapter">
+          <a class="toc-link" href={`#${chapter.slug}`} data-section={chapter.slug}><span class="toc-number">{String(index + 1).padStart(2, '0')}</span><span>{chapter.text}</span></a>
+          <div class="toc-subsections">
+            {headings.slice(headings.indexOf(chapter) + 1, chapters[index + 1] ? headings.indexOf(chapters[index + 1]) : undefined).filter(h => h.depth === 3).map(h => <a href={`#${h.slug}`} title={h.text}>{h.text.split('：')[0]}</a>)}
+          </div>
+        </div>
+      ))}
+    </nav>
+    <a class="toc-top" href="#main">返回顶部 <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 13V3M3 8l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
+  </details>
+</aside>
+<script>
+  const toc = document.querySelector<HTMLDetailsElement>('.toc');
+  if (toc) {
+    const mobile = window.matchMedia('(max-width: 800px)');
+    const updateOpen = () => { toc.open = !mobile.matches; };
+    updateOpen();
+    mobile.addEventListener('change', updateOpen);
+    toc.addEventListener('click', event => {
+      const link = (event.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
+      if (link && mobile.matches) toc.open = false;
+    });
+    const links = Array.from(toc.querySelectorAll<HTMLAnchorElement>('[data-section]'));
+    const sections = links.map(link => document.getElementById(link.dataset.section!)).filter((element): element is HTMLElement => !!element);
+    let ticking = false;
+    const updateActive = () => {
+      let active = sections[0];
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= 170) active = section;
+      }
+      for (const link of links) {
+        const selected = link.dataset.section === active?.id;
+        if (selected) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+        link.closest('.toc-chapter')?.classList.toggle('is-active', selected);
+      }
+      ticking = false;
+    };
+    document.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(updateActive); }
+    }, { passive: true });
+    updateActive();
+  }
+</script>

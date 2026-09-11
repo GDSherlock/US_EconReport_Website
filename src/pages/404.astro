@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { href } from '../lib/reports';
+---
+<BaseLayout title="未找到报告" description="该报告地址不存在。"><main id="main" class="wrap not-found"><span>404</span><h1>这份报告不在书架上。</h1><p>可以返回最新周报，或在研究归档中查找。</p><a href={href()}>阅读最新周报 →</a><a href={href('archive/')}>研究归档 →</a></main></BaseLayout>

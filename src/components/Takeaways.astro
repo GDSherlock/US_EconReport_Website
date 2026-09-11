@@ -1,0 +1,10 @@
+---
+interface Props { items: { title: string; text: string }[]; }
+const { items } = Astro.props;
+---
+<section class="takeaways" aria-labelledby="key-takeaways">
+  <div class="section-heading"><h2 id="key-takeaways">本周核心判断</h2><span class="section-english">THE WEEK IN FOCUS</span></div>
+  <ol>
+    {items.map((item, index) => <li><span class="takeaway-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></li>)}
+  </ol>
+</section>
