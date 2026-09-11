@@ -36,7 +36,7 @@ const canonical = Astro.site ? new URL(canonicalPath ?? Astro.url.pathname, Astr
     <slot />
     <footer class="site-footer wrap">
       <div><a class="footer-brand" href={href()}>观澜</a><span class="footer-caption">观察宏观，理解变化。</span></div>
-      <span>美国宏观周报 <span class="footer-divider">/</span> 每周研究记录</span>
+      <span>美国宏观周报 <span class="footer-divider">/</span> 每周研究记录 <span class="footer-divider">/</span> <a href={href('contact/')} aria-current={Astro.url.pathname === href('contact/') ? 'page' : undefined}>关于与联系</a></span>
     </footer>
   </body>
 </html>

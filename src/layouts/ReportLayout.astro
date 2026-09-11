@@ -26,8 +26,14 @@ const [firstLine, ...rest] = data.title.split('，');
         <div class="prose"><Content /></div>
         {data.focus && <section class="next-focus" aria-labelledby="next-focus-title"><h2 id="next-focus-title">接下来关注</h2><p>{data.focus}</p></section>}
         <div class="report-end"><span>本期完</span><span class="end-rule"></span><time datetime={data.date}>{data.date.replaceAll('-', '.')}</time></div>
+        <p class="report-disclaimer"><a href={href('contact/#disclaimer')}>仅供研究交流，不构成投资建议。</a></p>
         <nav class="report-bottom-nav" aria-label="报告阅读导航"><a href={href('archive/')}>浏览研究归档 <span aria-hidden="true">↗</span></a><a href="#main">返回顶部 ↑</a></nav>
       </article>
     </div>
   </main>
 </BaseLayout>
+<style>
+  .report-disclaimer { margin: 0 0 24px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+  .report-disclaimer a { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line); }
+  .report-disclaimer a:hover { color: var(--accent); }
+</style>
