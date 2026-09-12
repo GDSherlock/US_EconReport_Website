@@ -1,0 +1,1 @@
+{"chartId":"jobless-claims","version":1,"title":"申请失业金人数","topic":"labor","defaultRange":"5y","panels":[{"title":"初请失业金","seriesIds":["initial-claims"],"unit":"万人","type":"line","derive":null},{"title":"续请失业金","seriesIds":["continued-claims"],"unit":"万人","type":"line","derive":null}],"note":"两条序列的最新有效日期可能不同，各自标注，不延用前值。"}

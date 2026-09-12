@@ -1,0 +1,1 @@
+{"chartId":"treasury-yields","version":1,"title":"国债收益率与期限利差","topic":"rates","defaultRange":"5y","panels":[{"title":"国债收益率","seriesIds":["treasury-2y","treasury-10y","treasury-30y"],"unit":"%","type":"line","derive":null},{"title":"10年 − 2年","seriesIds":["treasury-10y","treasury-2y"],"unit":"bp","type":"line","derive":"spread-bp"}],"note":"名义国债收益率按原始日频展示，期限利差按同一交易日期计算。"}

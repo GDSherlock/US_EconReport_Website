@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import { href } from '../lib/reports';
-interface Props { title: string; description: string; active?: 'latest' | 'archive'; canonicalPath?: string; }
+interface Props { title: string; description: string; active?: 'latest' | 'archive' | 'charts'; canonicalPath?: string; }
 const { title, description, active, canonicalPath } = Astro.props;
 const canonical = Astro.site ? new URL(canonicalPath ?? Astro.url.pathname, Astro.site) : undefined;
 ---
@@ -31,6 +31,7 @@ const canonical = Astro.site ? new URL(canonicalPath ?? Astro.url.pathname, Astr
       <nav class="site-nav" aria-label="网站导航">
         <a href={href()} aria-current={active === 'latest' ? 'page' : undefined}>最新周报</a>
         <a href={href('archive/')} aria-current={active === 'archive' ? 'page' : undefined}>研究归档 <span class="nav-en">Archive</span></a>
+        <a href={href('charts/')} aria-current={active === 'charts' ? 'page' : undefined}>数据图表</a>
       </nav>
     </header>
     <slot />

@@ -1,0 +1,1 @@
+{"chartId":"cpi-inflation","version":1,"title":"消费价格通胀","topic":"inflation","defaultRange":"5y","panels":[{"title":"CPI 同比","seriesIds":["cpi","core-cpi"],"unit":"%","type":"line","derive":null}],"note":"同比口径。附件中的不同物价指标可能具有不同的最新统计月份。"}

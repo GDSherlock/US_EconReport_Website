@@ -1,0 +1,1 @@
+{"chartId":"inflation-expectations","version":1,"title":"消费者通胀预期","topic":"inflation","defaultRange":"5y","panels":[{"title":"纽约联储通胀预期","seriesIds":["inflation-expectation-1y","inflation-expectation-3y","inflation-expectation-5y"],"unit":"%","type":"line","derive":null}],"note":"消费者调查中位数；期限为预期跨度，不是观测频率。"}

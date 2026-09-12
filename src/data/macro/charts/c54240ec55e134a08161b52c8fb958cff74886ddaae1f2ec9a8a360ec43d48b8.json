@@ -1,0 +1,1 @@
+{"chartId":"sofr-ois","version":1,"title":"短端利率与 SOFR–OIS 利差","topic":"rates","defaultRange":"5y","panels":[{"title":"SOFR 与 OIS","seriesIds":["sofr","ois"],"unit":"%","type":"line","derive":null},{"title":"SOFR − OIS","seriesIds":["sofr","ois"],"unit":"bp","type":"line","derive":"spread-bp"}],"note":"OIS 沿用附件代码口径。2026-09-04 附件值与当期报告存在差异，本图展示附件历史序列。"}

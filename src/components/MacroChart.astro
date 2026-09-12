@@ -1,0 +1,8 @@
+---
+import { DATA_ROOT, resolveChart } from '../lib/chart-data.mjs';
+import { renderChartFigure } from '../lib/chart-render.mjs';
+interface Props { chartId: string; releaseId?: string; }
+const {chartId, releaseId}=Astro.props;
+const data=resolveChart(DATA_ROOT,releaseId,chartId);
+---
+<Fragment set:html={renderChartFigure(data,{mode:'page',instanceId:chartId})} />

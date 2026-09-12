@@ -5,6 +5,7 @@ import BaseLayout from './BaseLayout.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import Takeaways from '../components/Takeaways.astro';
 import { href, formatDate, readingMinutes } from '../lib/reports';
+import '../styles/charts.css';
 interface Props { report: CollectionEntry<'reports'>; isHome?: boolean; }
 const { report, isHome = false } = Astro.props;
 const { Content, headings } = await render(report);

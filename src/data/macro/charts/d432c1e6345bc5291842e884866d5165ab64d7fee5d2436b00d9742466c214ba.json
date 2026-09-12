@@ -1,0 +1,1 @@
+{"chartId":"liquidity-weekly-change","version":1,"title":"流动性周度变化贡献","topic":"liquidity","defaultRange":"5y","panels":[{"title":"周度变化贡献","seriesIds":["fed-liabilities","tga","reverse-repo"],"unit":"百万美元","type":"bar","derive":"weekly-contribution"}],"note":"负债增加记为正贡献，TGA 与逆回购增加记为负贡献；缺少相邻周时不计算。"}

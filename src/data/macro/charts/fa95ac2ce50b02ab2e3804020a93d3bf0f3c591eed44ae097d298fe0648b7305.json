@@ -1,0 +1,1 @@
+{"chartId":"ism-activity","version":1,"title":"企业活动调查","topic":"growth","defaultRange":"5y","panels":[{"title":"ISM PMI","seriesIds":["ism-manufacturing","ism-services"],"unit":"指数","type":"line","derive":null}],"note":"制造业与非制造业调查并列展示，保留来源指标名称。"}

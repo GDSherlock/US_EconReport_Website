@@ -1,0 +1,1 @@
+{"chartId":"wage-growth","version":1,"title":"工资增长","topic":"labor","defaultRange":"5y","panels":[{"title":"平均时薪同比","seriesIds":["wage-yoy"],"unit":"%","type":"line","derive":null},{"title":"平均时薪环比","seriesIds":["wage-mom"],"unit":"%","type":"line","derive":null}],"note":"私人非农平均时薪；同比与环比分面，保留原始数值精度。"}

@@ -1,0 +1,1 @@
+{"chartId":"market-volatility","version":1,"title":"债券与股票市场波动","topic":"financial-conditions","defaultRange":"5y","panels":[{"title":"MOVE","seriesIds":["move"],"unit":"指数","type":"line","derive":null},{"title":"VIX","seriesIds":["vix"],"unit":"指数","type":"line","derive":null}],"note":"两个波动率指数分别展示；沿用附件周度观测，不推断日收盘或周均口径。"}

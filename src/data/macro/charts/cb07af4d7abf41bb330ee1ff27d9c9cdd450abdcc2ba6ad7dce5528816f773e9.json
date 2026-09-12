@@ -1,0 +1,1 @@
+{"chartId":"supply-chain-pressure","version":1,"title":"全球供应链压力","topic":"inflation","defaultRange":"5y","panels":[{"title":"GSCPI","seriesIds":["gscpi"],"unit":"指数","type":"line","derive":null}],"note":"月度 GSCPI；空值和无法确认的未完成期间不作为完整观测发布。"}

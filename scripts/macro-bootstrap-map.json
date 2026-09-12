@@ -1,0 +1,1248 @@
+{
+  "series": [
+    {
+      "seriesId": "fed-liabilities",
+      "name": "美联储负债",
+      "sheet": "美联储金融流动性（负债规模-TGA-逆回购）",
+      "dateColumn": "A",
+      "valueColumn": "B",
+      "startRow": 9,
+      "headerCell": "B2",
+      "expectedHeader": "FARBLIAB Index",
+      "frequency": "weekly",
+      "unit": "百万美元",
+      "adjustment": "unknown",
+      "measure": "美联储负债"
+    },
+    {
+      "seriesId": "tga",
+      "name": "财政部一般账户（TGA）",
+      "sheet": "美联储金融流动性（负债规模-TGA-逆回购）",
+      "dateColumn": "A",
+      "valueColumn": "C",
+      "startRow": 9,
+      "headerCell": "C2",
+      "expectedHeader": "FARBDTRS Index",
+      "frequency": "weekly",
+      "unit": "百万美元",
+      "adjustment": "unknown",
+      "measure": "财政部一般账户（TGA）"
+    },
+    {
+      "seriesId": "reverse-repo",
+      "name": "逆回购",
+      "sheet": "美联储金融流动性（负债规模-TGA-逆回购）",
+      "dateColumn": "A",
+      "valueColumn": "D",
+      "startRow": 9,
+      "headerCell": "D2",
+      "expectedHeader": "FARWRRA Index",
+      "frequency": "weekly",
+      "unit": "百万美元",
+      "adjustment": "unknown",
+      "measure": "逆回购"
+    },
+    {
+      "seriesId": "sofr",
+      "name": "SOFR",
+      "sheet": "流动性SOFR-OIS",
+      "dateColumn": "A",
+      "valueColumn": "B",
+      "startRow": 7,
+      "headerCell": "B1",
+      "expectedHeader": "SOFRRATE Index",
+      "frequency": "weekly",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "工作簿周度观测；OIS期限沿用来源代码 USSOC BGN Curncy，未额外推断"
+    },
+    {
+      "seriesId": "ois",
+      "name": "OIS",
+      "sheet": "流动性SOFR-OIS",
+      "dateColumn": "A",
+      "valueColumn": "C",
+      "startRow": 7,
+      "headerCell": "C1",
+      "expectedHeader": "USSOC BGN Curncy",
+      "frequency": "weekly",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "工作簿周度观测；OIS期限沿用来源代码 USSOC BGN Curncy，未额外推断"
+    },
+    {
+      "seriesId": "treasury-1m",
+      "name": "美国国债 1个月",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "R",
+      "startRow": 4,
+      "headerCell": "R2",
+      "expectedHeader": "美国:国债收益率:1个月",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 1个月"
+    },
+    {
+      "seriesId": "treasury-2m",
+      "name": "美国国债 2个月",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "S",
+      "startRow": 4,
+      "headerCell": "S2",
+      "expectedHeader": "美国:国债收益率:2个月",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 2个月"
+    },
+    {
+      "seriesId": "treasury-3m",
+      "name": "美国国债 3个月",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "T",
+      "startRow": 4,
+      "headerCell": "T2",
+      "expectedHeader": "美国:国债收益率:3个月",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 3个月"
+    },
+    {
+      "seriesId": "treasury-6m",
+      "name": "美国国债 6个月",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "U",
+      "startRow": 4,
+      "headerCell": "U2",
+      "expectedHeader": "美国:国债收益率:6个月",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 6个月"
+    },
+    {
+      "seriesId": "treasury-1y",
+      "name": "美国国债 1年",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "V",
+      "startRow": 4,
+      "headerCell": "V2",
+      "expectedHeader": "美国:国债收益率:1年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 1年"
+    },
+    {
+      "seriesId": "treasury-2y",
+      "name": "美国国债 2年",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "W",
+      "startRow": 4,
+      "headerCell": "W2",
+      "expectedHeader": "美国:国债收益率:2年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 2年"
+    },
+    {
+      "seriesId": "treasury-3y",
+      "name": "美国国债 3年",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "X",
+      "startRow": 4,
+      "headerCell": "X2",
+      "expectedHeader": "美国:国债收益率:3年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 3年"
+    },
+    {
+      "seriesId": "treasury-5y",
+      "name": "美国国债 5年",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "Y",
+      "startRow": 4,
+      "headerCell": "Y2",
+      "expectedHeader": "美国:国债收益率:5年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 5年"
+    },
+    {
+      "seriesId": "treasury-7y",
+      "name": "美国国债 7年",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "Z",
+      "startRow": 4,
+      "headerCell": "Z2",
+      "expectedHeader": "美国:国债收益率:7年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 7年"
+    },
+    {
+      "seriesId": "treasury-10y",
+      "name": "美国国债 10年",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "AA",
+      "startRow": 4,
+      "headerCell": "AA2",
+      "expectedHeader": "美国:国债收益率:10年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 10年"
+    },
+    {
+      "seriesId": "treasury-20y",
+      "name": "美国国债 20年",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "AB",
+      "startRow": 4,
+      "headerCell": "AB2",
+      "expectedHeader": "美国:国债收益率:20年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 20年"
+    },
+    {
+      "seriesId": "treasury-30y",
+      "name": "美国国债 30年",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "AC",
+      "startRow": 4,
+      "headerCell": "AC2",
+      "expectedHeader": "美国:国债收益率:30年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "美国国债 30年"
+    },
+    {
+      "seriesId": "tips-10y",
+      "name": "10年 TIPS 实际收益率",
+      "sheet": "美国国债",
+      "dateColumn": "Q",
+      "valueColumn": "AF",
+      "startRow": 4,
+      "headerCell": "AF2",
+      "expectedHeader": "美国:国债收益率:通胀指数国债(TIPS):10年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "10年 TIPS 实际收益率"
+    },
+    {
+      "seriesId": "real-gdp-growth",
+      "name": "实际 GDP 环比折年率",
+      "sheet": "美国GDP分稿",
+      "dateColumn": "A",
+      "valueColumn": "B",
+      "startRow": 6,
+      "headerCell": "B4",
+      "expectedHeader": "美国:GDP:不变价:环比折年率:季调",
+      "frequency": "quarterly",
+      "unit": "%",
+      "adjustment": "sa",
+      "measure": "实际 GDP 环比折年率"
+    },
+    {
+      "seriesId": "ism-manufacturing",
+      "name": "ISM 制造业 PMI",
+      "sheet": "美国ISM制造业PMI（月度指标）",
+      "dateColumn": "S",
+      "valueColumn": "T",
+      "startRow": 24,
+      "headerCell": "T22",
+      "expectedHeader": "美国:供应管理协会(ISM):制造业PMI",
+      "frequency": "monthly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "ISM 制造业 PMI"
+    },
+    {
+      "seriesId": "ism-services",
+      "name": "ISM 非制造业 PMI",
+      "sheet": "美国ISM制造业PMI（月度指标）",
+      "dateColumn": "AT",
+      "valueColumn": "AU",
+      "startRow": 24,
+      "headerCell": "AU22",
+      "expectedHeader": "美国:ISM:非制造业PMI",
+      "frequency": "monthly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "ISM 非制造业 PMI"
+    },
+    {
+      "seriesId": "redbook",
+      "name": "红皮书零售周同比",
+      "sheet": "周度数据",
+      "dateColumn": "F",
+      "valueColumn": "G",
+      "startRow": 6,
+      "headerCell": "G4",
+      "expectedHeader": "美国:红皮书商业零售销售:周同比:周",
+      "frequency": "weekly",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "红皮书零售周同比"
+    },
+    {
+      "seriesId": "weekly-economic-index",
+      "name": "周度经济指数",
+      "sheet": "周度数据",
+      "dateColumn": "P",
+      "valueColumn": "S",
+      "startRow": 6,
+      "headerCell": "S4",
+      "expectedHeader": "美国:周度经济指数:周",
+      "frequency": "weekly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "周度经济指数"
+    },
+    {
+      "seriesId": "cpi",
+      "name": "CPI 同比",
+      "sheet": "月度数据",
+      "dateColumn": "AG",
+      "valueColumn": "AH",
+      "startRow": 6,
+      "headerCell": "AH4",
+      "expectedHeader": "美国:CPI:当月同比",
+      "frequency": "monthly",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "CPI 同比"
+    },
+    {
+      "seriesId": "core-cpi",
+      "name": "核心 CPI 同比",
+      "sheet": "月度数据",
+      "dateColumn": "AG",
+      "valueColumn": "AI",
+      "startRow": 6,
+      "headerCell": "AI4",
+      "expectedHeader": "美国:核心CPI:当月同比",
+      "frequency": "monthly",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "核心 CPI 同比"
+    },
+    {
+      "seriesId": "pce",
+      "name": "PCE 同比",
+      "sheet": "月度数据",
+      "dateColumn": "AJ",
+      "valueColumn": "AK",
+      "startRow": 6,
+      "headerCell": "AK4",
+      "expectedHeader": "美国:PCE:当月同比",
+      "frequency": "monthly",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "PCE 同比"
+    },
+    {
+      "seriesId": "core-pce",
+      "name": "核心 PCE 同比",
+      "sheet": "月度数据",
+      "dateColumn": "AJ",
+      "valueColumn": "AL",
+      "startRow": 6,
+      "headerCell": "AL4",
+      "expectedHeader": "美国:核心PCE:当月同比",
+      "frequency": "monthly",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "核心 PCE 同比"
+    },
+    {
+      "seriesId": "inflation-expectation-1y",
+      "name": "1年通胀预期中位数",
+      "sheet": "纽约联储",
+      "dateColumn": "A",
+      "valueColumn": "B",
+      "startRow": 6,
+      "headerCell": "B4",
+      "expectedHeader": "美国:纽约联储:通胀率预期:中位数:1年",
+      "frequency": "monthly",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "1年通胀预期中位数"
+    },
+    {
+      "seriesId": "inflation-expectation-3y",
+      "name": "3年通胀预期中位数",
+      "sheet": "纽约联储",
+      "dateColumn": "A",
+      "valueColumn": "C",
+      "startRow": 6,
+      "headerCell": "C4",
+      "expectedHeader": "美国:纽约联储:通胀率预期:中位数:3年",
+      "frequency": "monthly",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "3年通胀预期中位数"
+    },
+    {
+      "seriesId": "inflation-expectation-5y",
+      "name": "5年通胀预期中位数",
+      "sheet": "纽约联储",
+      "dateColumn": "A",
+      "valueColumn": "D",
+      "startRow": 6,
+      "headerCell": "D4",
+      "expectedHeader": "美国:纽约联储:通胀率预期:中位数:5年",
+      "frequency": "monthly",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "5年通胀预期中位数"
+    },
+    {
+      "seriesId": "gscpi",
+      "name": "全球供应链压力指数",
+      "sheet": "纽约联储",
+      "dateColumn": "I",
+      "valueColumn": "K",
+      "startRow": 4,
+      "headerCell": "K2",
+      "expectedHeader": "全球供应链压力指数(GSCPI)",
+      "frequency": "monthly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "全球供应链压力指数"
+    },
+    {
+      "seriesId": "payroll-change",
+      "name": "新增非农就业",
+      "sheet": "劳动力市场（月度指标）",
+      "dateColumn": "BD",
+      "valueColumn": "BE",
+      "startRow": 37,
+      "headerCell": "BE35",
+      "expectedHeader": "美国:新增非农就业人数:总计:季调",
+      "frequency": "monthly",
+      "unit": "万人",
+      "adjustment": "sa",
+      "measure": "新增非农就业"
+    },
+    {
+      "seriesId": "unemployment-rate",
+      "name": "失业率",
+      "sheet": "劳动力市场（月度指标）",
+      "dateColumn": "AT",
+      "valueColumn": "AU",
+      "startRow": 37,
+      "headerCell": "AU35",
+      "expectedHeader": "美国:失业率:季调",
+      "frequency": "monthly",
+      "unit": "%",
+      "adjustment": "sa",
+      "measure": "失业率"
+    },
+    {
+      "seriesId": "wage-yoy",
+      "name": "平均时薪同比",
+      "sheet": "劳动力市场（月度指标）",
+      "dateColumn": "DY",
+      "valueColumn": "DZ",
+      "startRow": 37,
+      "headerCell": "DZ35",
+      "expectedHeader": "美国:私人非农企业全部员工:平均时薪:总计:季调:同比",
+      "frequency": "monthly",
+      "unit": "%",
+      "adjustment": "sa",
+      "measure": "平均时薪同比"
+    },
+    {
+      "seriesId": "wage-mom",
+      "name": "平均时薪环比",
+      "sheet": "劳动力市场（月度指标）",
+      "dateColumn": "DB",
+      "valueColumn": "DC",
+      "startRow": 37,
+      "headerCell": "DC35",
+      "expectedHeader": "美国:私人非农企业全部员工:平均时薪:总计:季调:环比",
+      "frequency": "monthly",
+      "unit": "%",
+      "adjustment": "sa",
+      "measure": "平均时薪环比"
+    },
+    {
+      "seriesId": "initial-claims",
+      "name": "初次申请失业金",
+      "sheet": "周度数据",
+      "dateColumn": "I",
+      "valueColumn": "J",
+      "startRow": 6,
+      "headerCell": "J4",
+      "expectedHeader": "美国:当周初次申请失业金人数:季调:周",
+      "frequency": "weekly",
+      "unit": "万人",
+      "adjustment": "sa",
+      "measure": "初次申请失业金"
+    },
+    {
+      "seriesId": "continued-claims",
+      "name": "持续领取失业金",
+      "sheet": "周度数据",
+      "dateColumn": "I",
+      "valueColumn": "K",
+      "startRow": 6,
+      "headerCell": "K4",
+      "expectedHeader": "美国:持续领取失业金人数:季调:周",
+      "frequency": "weekly",
+      "unit": "万人",
+      "adjustment": "sa",
+      "measure": "持续领取失业金"
+    },
+    {
+      "seriesId": "home-sales",
+      "name": "成屋销售季调折年数",
+      "sheet": "成屋销售",
+      "dateColumn": "A",
+      "valueColumn": "B",
+      "startRow": 6,
+      "headerCell": "B4",
+      "expectedHeader": "美国:成屋销量:季调:折年数",
+      "frequency": "monthly",
+      "unit": "万套",
+      "adjustment": "sa",
+      "measure": "成屋销售季调折年数"
+    },
+    {
+      "seriesId": "home-inventory",
+      "name": "成屋库存",
+      "sheet": "成屋销售",
+      "dateColumn": "A",
+      "valueColumn": "J",
+      "startRow": 6,
+      "headerCell": "J4",
+      "expectedHeader": "美国:成屋库存量",
+      "frequency": "monthly",
+      "unit": "万套",
+      "adjustment": "unknown",
+      "measure": "成屋库存"
+    },
+    {
+      "seriesId": "home-months-supply",
+      "name": "成屋可供销售月数",
+      "sheet": "成屋销售",
+      "dateColumn": "A",
+      "valueColumn": "K",
+      "startRow": 6,
+      "headerCell": "K4",
+      "expectedHeader": "美国:成屋库存量:可供销售月数",
+      "frequency": "monthly",
+      "unit": "月",
+      "adjustment": "unknown",
+      "measure": "成屋可供销售月数"
+    },
+    {
+      "seriesId": "mortgage-30y",
+      "name": "30年固定按揭利率",
+      "sheet": "周度数据",
+      "dateColumn": "M",
+      "valueColumn": "N",
+      "startRow": 6,
+      "headerCell": "N4",
+      "expectedHeader": "美国:30年期抵押贷款固定利率:周",
+      "frequency": "weekly",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "30年固定按揭利率"
+    },
+    {
+      "seriesId": "nfci",
+      "name": "芝加哥联储全国金融状况指数",
+      "sheet": "周度数据",
+      "dateColumn": "P",
+      "valueColumn": "R",
+      "startRow": 6,
+      "headerCell": "R4",
+      "expectedHeader": "美国:芝加哥联储全国金融状况指数(周):周",
+      "frequency": "weekly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "芝加哥联储全国金融状况指数"
+    },
+    {
+      "seriesId": "stl-stress",
+      "name": "圣路易斯金融压力指数",
+      "sheet": "周度数据",
+      "dateColumn": "P",
+      "valueColumn": "Q",
+      "startRow": 6,
+      "headerCell": "Q4",
+      "expectedHeader": "美国:圣路易斯金融压力指数(周):周",
+      "frequency": "weekly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "圣路易斯金融压力指数"
+    },
+    {
+      "seriesId": "move",
+      "name": "MOVE 指数",
+      "sheet": "MOVE 和VIX",
+      "dateColumn": "E",
+      "valueColumn": "F",
+      "startRow": 2,
+      "headerCell": "F1",
+      "expectedHeader": "MOVE指数",
+      "frequency": "weekly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "MOVE 指数"
+    },
+    {
+      "seriesId": "vix",
+      "name": "VIX 指数",
+      "sheet": "MOVE 和VIX",
+      "dateColumn": "I",
+      "valueColumn": "J",
+      "startRow": 4,
+      "headerCell": "J2",
+      "expectedHeader": "标准普尔500波动率指数(VIX):周",
+      "frequency": "weekly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "VIX 指数"
+    }
+  ],
+  "charts": [
+    {
+      "chartId": "net-liquidity",
+      "version": 1,
+      "title": "金融流动性规模",
+      "topic": "liquidity",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "金融流动性",
+          "seriesIds": [
+            "fed-liabilities",
+            "tga",
+            "reverse-repo"
+          ],
+          "unit": "百万美元",
+          "type": "line",
+          "derive": "net-liquidity"
+        }
+      ],
+      "note": "按工作簿口径：美联储负债 − TGA − 逆回购。该口径是研究用代理指标。"
+    },
+    {
+      "chartId": "liquidity-components",
+      "version": 1,
+      "title": "金融流动性的组成",
+      "topic": "liquidity",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "美联储负债",
+          "seriesIds": [
+            "fed-liabilities"
+          ],
+          "unit": "百万美元",
+          "type": "line",
+          "derive": null
+        },
+        {
+          "title": "TGA",
+          "seriesIds": [
+            "tga"
+          ],
+          "unit": "百万美元",
+          "type": "line",
+          "derive": null
+        },
+        {
+          "title": "逆回购",
+          "seriesIds": [
+            "reverse-repo"
+          ],
+          "unit": "百万美元",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "分项使用独立尺度；余额变化不等于同方向的流动性贡献。"
+    },
+    {
+      "chartId": "liquidity-weekly-change",
+      "version": 1,
+      "title": "流动性周度变化贡献",
+      "topic": "liquidity",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "周度变化贡献",
+          "seriesIds": [
+            "fed-liabilities",
+            "tga",
+            "reverse-repo"
+          ],
+          "unit": "百万美元",
+          "type": "bar",
+          "derive": "weekly-contribution"
+        }
+      ],
+      "note": "负债增加记为正贡献，TGA 与逆回购增加记为负贡献；缺少相邻周时不计算。"
+    },
+    {
+      "chartId": "sofr-ois",
+      "version": 1,
+      "title": "短端利率与 SOFR–OIS 利差",
+      "topic": "rates",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "SOFR 与 OIS",
+          "seriesIds": [
+            "sofr",
+            "ois"
+          ],
+          "unit": "%",
+          "type": "line",
+          "derive": null
+        },
+        {
+          "title": "SOFR − OIS",
+          "seriesIds": [
+            "sofr",
+            "ois"
+          ],
+          "unit": "bp",
+          "type": "line",
+          "derive": "spread-bp"
+        }
+      ],
+      "note": "OIS 沿用附件代码口径。2026-09-04 附件值与当期报告存在差异，本图展示附件历史序列。"
+    },
+    {
+      "chartId": "treasury-yields",
+      "version": 1,
+      "title": "国债收益率与期限利差",
+      "topic": "rates",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "国债收益率",
+          "seriesIds": [
+            "treasury-2y",
+            "treasury-10y",
+            "treasury-30y"
+          ],
+          "unit": "%",
+          "type": "line",
+          "derive": null
+        },
+        {
+          "title": "10年 − 2年",
+          "seriesIds": [
+            "treasury-10y",
+            "treasury-2y"
+          ],
+          "unit": "bp",
+          "type": "line",
+          "derive": "spread-bp"
+        }
+      ],
+      "note": "名义国债收益率按原始日频展示，期限利差按同一交易日期计算。"
+    },
+    {
+      "chartId": "yield-curve",
+      "version": 1,
+      "title": "美国国债收益率曲线",
+      "topic": "rates",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "期限结构",
+          "seriesIds": [
+            "treasury-1m",
+            "treasury-2m",
+            "treasury-3m",
+            "treasury-6m",
+            "treasury-1y",
+            "treasury-2y",
+            "treasury-3y",
+            "treasury-5y",
+            "treasury-7y",
+            "treasury-10y",
+            "treasury-20y",
+            "treasury-30y"
+          ],
+          "unit": "%",
+          "type": "yield-curve",
+          "derive": null,
+          "tenors": [
+            {
+              "label": "1个月",
+              "months": 1
+            },
+            {
+              "label": "2个月",
+              "months": 2
+            },
+            {
+              "label": "3个月",
+              "months": 3
+            },
+            {
+              "label": "6个月",
+              "months": 6
+            },
+            {
+              "label": "1年",
+              "months": 12
+            },
+            {
+              "label": "2年",
+              "months": 24
+            },
+            {
+              "label": "3年",
+              "months": 36
+            },
+            {
+              "label": "5年",
+              "months": 60
+            },
+            {
+              "label": "7年",
+              "months": 84
+            },
+            {
+              "label": "10年",
+              "months": 120
+            },
+            {
+              "label": "20年",
+              "months": 240
+            },
+            {
+              "label": "30年",
+              "months": 360
+            }
+          ]
+        }
+      ],
+      "note": "每条曲线使用同一日期全部期限的有效观测；期限标签等距排列。"
+    },
+    {
+      "chartId": "real-yield",
+      "version": 1,
+      "title": "10年期实际收益率",
+      "topic": "rates",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "10年 TIPS",
+          "seriesIds": [
+            "tips-10y"
+          ],
+          "unit": "%",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "使用通胀指数国债收益率，不与事后 CPI 相减。"
+    },
+    {
+      "chartId": "real-gdp",
+      "version": 1,
+      "title": "实际经济增长",
+      "topic": "growth",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "实际 GDP 环比折年率",
+          "seriesIds": [
+            "real-gdp-growth"
+          ],
+          "unit": "%",
+          "type": "bar",
+          "derive": null
+        }
+      ],
+      "note": "季度、季调、环比折年率；不等同于同比增长。"
+    },
+    {
+      "chartId": "ism-activity",
+      "version": 1,
+      "title": "企业活动调查",
+      "topic": "growth",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "ISM PMI",
+          "seriesIds": [
+            "ism-manufacturing",
+            "ism-services"
+          ],
+          "unit": "指数",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "制造业与非制造业调查并列展示，保留来源指标名称。"
+    },
+    {
+      "chartId": "weekly-activity",
+      "version": 1,
+      "title": "高频需求与经济活动",
+      "topic": "growth",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "红皮书零售周同比",
+          "seriesIds": [
+            "redbook"
+          ],
+          "unit": "%",
+          "type": "line",
+          "derive": null
+        },
+        {
+          "title": "周度经济指数",
+          "seriesIds": [
+            "weekly-economic-index"
+          ],
+          "unit": "指数",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "不同口径分面展示，不将两个指标的数值直接比较。"
+    },
+    {
+      "chartId": "cpi-inflation",
+      "version": 1,
+      "title": "消费价格通胀",
+      "topic": "inflation",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "CPI 同比",
+          "seriesIds": [
+            "cpi",
+            "core-cpi"
+          ],
+          "unit": "%",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "同比口径。附件中的不同物价指标可能具有不同的最新统计月份。"
+    },
+    {
+      "chartId": "pce-inflation",
+      "version": 1,
+      "title": "个人消费支出价格通胀",
+      "topic": "inflation",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "PCE 同比",
+          "seriesIds": [
+            "pce",
+            "core-pce"
+          ],
+          "unit": "%",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "同比口径，保留附件精度，不将缺失月份补齐为零。"
+    },
+    {
+      "chartId": "inflation-expectations",
+      "version": 1,
+      "title": "消费者通胀预期",
+      "topic": "inflation",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "纽约联储通胀预期",
+          "seriesIds": [
+            "inflation-expectation-1y",
+            "inflation-expectation-3y",
+            "inflation-expectation-5y"
+          ],
+          "unit": "%",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "消费者调查中位数；期限为预期跨度，不是观测频率。"
+    },
+    {
+      "chartId": "supply-chain-pressure",
+      "version": 1,
+      "title": "全球供应链压力",
+      "topic": "inflation",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "GSCPI",
+          "seriesIds": [
+            "gscpi"
+          ],
+          "unit": "指数",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "月度 GSCPI；空值和无法确认的未完成期间不作为完整观测发布。"
+    },
+    {
+      "chartId": "payrolls",
+      "version": 1,
+      "title": "新增非农就业",
+      "topic": "labor",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "非农就业月增量",
+          "seriesIds": [
+            "payroll-change"
+          ],
+          "unit": "万人",
+          "type": "bar",
+          "derive": null
+        }
+      ],
+      "note": "季调月增量；后续修订存入新版本，旧报告保留原来引用的数据。"
+    },
+    {
+      "chartId": "unemployment",
+      "version": 1,
+      "title": "失业率",
+      "topic": "labor",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "季调失业率",
+          "seriesIds": [
+            "unemployment-rate"
+          ],
+          "unit": "%",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "月度季调失业率，按附件历史序列展示。"
+    },
+    {
+      "chartId": "wage-growth",
+      "version": 1,
+      "title": "工资增长",
+      "topic": "labor",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "平均时薪同比",
+          "seriesIds": [
+            "wage-yoy"
+          ],
+          "unit": "%",
+          "type": "line",
+          "derive": null
+        },
+        {
+          "title": "平均时薪环比",
+          "seriesIds": [
+            "wage-mom"
+          ],
+          "unit": "%",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "私人非农平均时薪；同比与环比分面，保留原始数值精度。"
+    },
+    {
+      "chartId": "jobless-claims",
+      "version": 1,
+      "title": "申请失业金人数",
+      "topic": "labor",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "初请失业金",
+          "seriesIds": [
+            "initial-claims"
+          ],
+          "unit": "万人",
+          "type": "line",
+          "derive": null
+        },
+        {
+          "title": "续请失业金",
+          "seriesIds": [
+            "continued-claims"
+          ],
+          "unit": "万人",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "两条序列的最新有效日期可能不同，各自标注，不延用前值。"
+    },
+    {
+      "chartId": "existing-home-sales",
+      "version": 1,
+      "title": "成屋销售",
+      "topic": "housing",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "成屋销售",
+          "seriesIds": [
+            "home-sales"
+          ],
+          "unit": "万套",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "季调折年数，不是当月实际成交套数。"
+    },
+    {
+      "chartId": "housing-inventory",
+      "version": 1,
+      "title": "住房库存与去化",
+      "topic": "housing",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "成屋库存",
+          "seriesIds": [
+            "home-inventory"
+          ],
+          "unit": "万套",
+          "type": "line",
+          "derive": null
+        },
+        {
+          "title": "可供销售月数",
+          "seriesIds": [
+            "home-months-supply"
+          ],
+          "unit": "月",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "数量和月数分面展示，不共用纵轴。"
+    },
+    {
+      "chartId": "mortgage-rate",
+      "version": 1,
+      "title": "住房融资成本",
+      "topic": "housing",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "30年固定按揭利率",
+          "seriesIds": [
+            "mortgage-30y"
+          ],
+          "unit": "%",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "周度利率；与月度住房成交指标分开保留各自频率。"
+    },
+    {
+      "chartId": "financial-conditions",
+      "version": 1,
+      "title": "金融状况",
+      "topic": "financial-conditions",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "芝加哥联储全国金融状况",
+          "seriesIds": [
+            "nfci"
+          ],
+          "unit": "指数",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "采用周度序列，不与工作簿月度版本混接。"
+    },
+    {
+      "chartId": "financial-stress",
+      "version": 1,
+      "title": "金融压力",
+      "topic": "financial-conditions",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "圣路易斯金融压力",
+          "seriesIds": [
+            "stl-stress"
+          ],
+          "unit": "指数",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "采用周度序列，保留来源的历史口径。"
+    },
+    {
+      "chartId": "market-volatility",
+      "version": 1,
+      "title": "债券与股票市场波动",
+      "topic": "financial-conditions",
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "MOVE",
+          "seriesIds": [
+            "move"
+          ],
+          "unit": "指数",
+          "type": "line",
+          "derive": null
+        },
+        {
+          "title": "VIX",
+          "seriesIds": [
+            "vix"
+          ],
+          "unit": "指数",
+          "type": "line",
+          "derive": null
+        }
+      ],
+      "note": "两个波动率指数分别展示；沿用附件周度观测，不推断日收盘或周均口径。"
+    }
+  ]
+}

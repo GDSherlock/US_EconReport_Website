@@ -12,6 +12,12 @@ const reports = defineCollection({
     draft: z.boolean().default(false),
     takeaways: z.array(z.object({ title: z.string().min(1), text: z.string().min(1) })).min(1),
     focus: z.string().optional(),
+    charts: z.array(z.object({
+      chartId: z.string().min(1), releaseId: z.string().min(1),
+      range: z.object({from:z.string(),to:z.string()}),
+      caption: z.string().min(1), versionNote: z.string().min(1),
+      selectedPeriod: z.string().optional(),
+    })).optional(),
   }),
 });
 export const collections = { reports };

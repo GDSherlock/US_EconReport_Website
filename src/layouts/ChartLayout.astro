@@ -1,0 +1,25 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { href } from '../lib/reports';
+import '../styles/charts.css';
+interface Props {title:string; description:string; topic?:string; charts?:{chartId:string;title:string}[];}
+const {title,description,topic,charts=[]}=Astro.props;
+---
+<BaseLayout title={title} description={description} active="charts" canonicalPath={href(topic?`charts/${topic}/`:'charts/')}>
+ <main id="main" class="wrap chart-main">
+  <header class="chart-page-header">
+   <div class="chart-eyebrow">{topic?<a href={href('charts/')}>数据图表 <span aria-hidden="true">/</span></a>:'研究资料'} <span>DATA & EVIDENCE</span></div>
+   <h1>{title}</h1><p>{description}</p>
+   <div class="chart-header-foot"><span>研究的数据与证据层</span><a href={href()}>阅读最新周报 ↗</a></div>
+  </header>
+  <div class:list={['chart-page-body',{'has-chart-toc':charts.length>0}]}>
+   {charts.length>0&&<aside class="chart-toc"><details open><summary>本页图表</summary><nav aria-label="本页图表">{charts.map((chart,i)=><a href={`#${chart.chartId}`}><span>{String(i+1).padStart(2,'0')}</span>{chart.title}</a>)}</nav><a class="chart-all-topics" href={href('charts/')}>全部主题 ↗</a></details></aside>}
+   <div class="chart-content"><slot /></div>
+  </div>
+ </main>
+</BaseLayout>
+<script>
+ import '../scripts/chart-controls';
+ const details=document.querySelector<HTMLDetailsElement>('.chart-toc details');
+ if(details){const media=matchMedia('(max-width:800px)');const sync=()=>details.open=!media.matches;sync();media.addEventListener('change',sync);details.addEventListener('click',e=>{if((e.target as Element).closest('a')&&media.matches)details.open=false;});}
+</script>

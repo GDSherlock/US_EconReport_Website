@@ -1,0 +1,1 @@
+{"chartId":"mortgage-rate","version":1,"title":"住房融资成本","topic":"housing","defaultRange":"5y","panels":[{"title":"30年固定按揭利率","seriesIds":["mortgage-30y"],"unit":"%","type":"line","derive":null}],"note":"周度利率；与月度住房成交指标分开保留各自频率。"}
