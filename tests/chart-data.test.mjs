@@ -5,6 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { validateSeries, validateDefinition, derivePoints, resolveChart, readRelease, readObject } from '../src/lib/chart-data.mjs';
 import { prepareUpdate, writeUpdate } from '../scripts/update-macro-data.mjs';
+import { buildInventory } from '../scripts/macro-inventory.mjs';
 
 const point = (period, value) => ({ period, value, status: value === null ? 'missing' : 'observed', sourceRef: 'test', sourcePublishedAt: null });
 const series = () => ({ seriesId:'test-rate', name:'Test only', frequency:'weekly',unit:'%',adjustment:'unknown',measure:'test only',sources:{test:{label:'Test fixture',locator:'fixture',retrievedAt:'2026-09-12',fileSha256:null,url:null}},points:[point('2026-09-04',3.65)] });
@@ -43,6 +44,7 @@ test('revisions preserve old release and chart definition, dry run is read only,
   const initial={releaseId:'a',sourceEdition:'test only',newSeries:[series()],chartDefinitions:[chart],updates:[]};
   const a=prepareUpdate(root,initial); assert.deepEqual(fs.readdirSync(root),[]); writeUpdate(root,a);
   const before=resolveChart(root,'a','test-chart');
+  assert.match(buildInventory(root),/2026-09-04 \| 3\.65 \| test-chart/);
   assert.throws(()=>prepareUpdate(root,{releaseId:'bad',sourceEdition:'test',updates:[{seriesId:'test-rate',points:[point('2026-09-04',4)]}]}),/reason/i);
   assert.equal(readRelease(root).releaseId,'a');
   const batch={releaseId:'b',sourceEdition:'test',updates:[{seriesId:'test-rate',reason:'source revision',points:[point('2026-09-04',4),point('2026-09-11',5)]}],chartDefinitions:[{...chart,version:2,title:'Revised definition'}]};
@@ -50,6 +52,8 @@ test('revisions preserve old release and chart definition, dry run is read only,
   assert.deepEqual(resolveChart(root,'a','test-chart'),before);
   assert.equal(resolveChart(root,'b','test-chart').panels[0].series[0].points.at(-1).value,5);
   assert.equal(resolveChart(root,'b','test-chart').definition.title,'Revised definition');
+  assert.match(buildInventory(root),/2026-09-11 \| 5 \| test-chart/);
+  assert.ok(buildInventory(root).includes('Revised definition'));
   writeUpdate(root,prepareUpdate(root,batch));
   assert.equal(resolveChart(root,'b','test-chart').panels[0].series[0].points.length,2);
   assert.throws(()=>prepareUpdate(root,{...batch,sourceEdition:'different'}),/exists/i);

@@ -52,8 +52,8 @@
 
 报告内图表固定引用该期的数据版本，点击“查看最新数据与完整历史”可进入对应主题页。图表数据初始化自提供的美国宏观数据库，之后通过标准化批次由 Agent 新增或修订；更新不会覆盖旧报告所引用的版本。
 
-- 数据维护与报告插图：[维护说明](docs/macro-data-maintenance.md)
-- 初始覆盖与已知数据差异：[初始化记录](docs/macro-data-initialization.md)
-- 浏览器手动验收：[验收清单](docs/chart-pages-acceptance.md)
+运行 `npm run data:inventory` 可输出当前全部指标、最新有效期间/数值、图表及关联关系。利率主题包含主要国家10年期利差；金融条件主题包含美元指数和美元兑主要货币汇率。页面来源统一标注 Wind、Bloomberg，数据更新日期与各指标的统计截止期分别保留。
+
+周报转换与数据更新的 Agent Prompt 保存在本地 `docs/Agent_workbook/`。该目录遵循现有忽略规则，不随代码提交；浏览器验收由用户执行。
 
 开发环境要求 Node.js >=22.19.0。运行 `npm test`、`npm run check` 和 `npm run build` 验证；构建前自动检查全部数据版本。`npm run preview` 启动本地构建预览。数据批次写入和本地构建均不会自动推送或部署。

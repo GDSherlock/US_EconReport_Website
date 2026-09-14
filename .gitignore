@@ -5,8 +5,5 @@ dist/
 .env
 .env.*
 !.env.example
-docs/*
-!docs/macro-data-maintenance.md
-!docs/macro-data-initialization.md
-!docs/weekly-report-prompt.md
-!docs/chart-pages-acceptance.md
+docs/
+

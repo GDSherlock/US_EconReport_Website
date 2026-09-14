@@ -41,7 +41,7 @@ def extract(workbook, mapping, edition, file_hash):
     while data and data[-1]['value'] is None: data.pop()
     if not data: raise ValueError(f"No data: {mapping['seriesId']}")
     series = {key: mapping[key] for key in ['seriesId', 'name', 'frequency', 'unit', 'adjustment', 'measure']}
-    series.update(sources={'workbook': {'label': '美国数据库20260911.xlsx（工作簿标注 Wind、彭博）', 'locator': f"{mapping['sheet']}!{mapping['dateColumn']}{mapping['startRow']}:{mapping['valueColumn']}{sheet.max_row}；表头 {mapping['headerCell']}", 'retrievedAt': dt.date.today().isoformat(), 'fileSha256': file_hash, 'url': None}}, points=data)
+    series.update(sources={'workbook': {'label': 'Wind、Bloomberg', 'locator': f"{mapping['sheet']}!{mapping['dateColumn']}{mapping['startRow']}:{mapping['valueColumn']}{sheet.max_row}；表头 {mapping['headerCell']}", 'retrievedAt': dt.date.today().isoformat(), 'fileSha256': file_hash, 'url': None}}, points=data)
     samples = [data[0], data[len(data)//2], data[-1]]
     return series, {'seriesId': mapping['seriesId'], 'count': len(data), 'missing': sum(p['value'] is None for p in data), 'samples': samples, 'issues': issues}
 
@@ -50,13 +50,15 @@ def main():
     parser.add_argument('--input', required=True)
     parser.add_argument('--edition', required=True)
     parser.add_argument('--out', required=True)
+    parser.add_argument('--map', default=str(Path(__file__).with_name('macro-bootstrap-map.json')))
+    parser.add_argument('--release-id', default='bootstrap-20260911')
     args = parser.parse_args()
     dt.date.fromisoformat(args.edition)
-    config = json.loads(Path(__file__).with_name('macro-bootstrap-map.json').read_text())
+    config = json.loads(Path(args.map).read_text())
     workbook = openpyxl.load_workbook(args.input, read_only=True, data_only=True)
     digest = hashlib.sha256(Path(args.input).read_bytes()).hexdigest()
     extracted = [extract(workbook, m, args.edition, digest) for m in config['series']]
-    batch = {'releaseId': 'bootstrap-20260911', 'sourceEdition': args.edition, 'newSeries': [s for s, _ in extracted], 'chartDefinitions': config['charts'], 'updates': []}
+    batch = {'releaseId': args.release_id, 'sourceEdition': args.edition, 'newSeries': [s for s, _ in extracted], 'chartDefinitions': config['charts'], 'updates': []}
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(batch, ensure_ascii=False), encoding='utf8')

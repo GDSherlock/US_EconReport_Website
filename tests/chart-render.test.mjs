@@ -32,3 +32,18 @@ test('figure escapes source text, provides a data table, and report has no range
  assert.ok(html.includes('source edition'));
  assert.ok(html.includes('chart-svg-narrow'), 'server-rendered report must have a readable narrow-screen graph without JavaScript');
 });
+test('public sources omit workbook filenames and internal locators while retaining the data date',()=>{
+ const resolved={releaseId:'bootstrap-20260911',sourceEdition:'2026-09-11',definition:{chartId:'sources',title:'Source test',defaultRange:'all'},panels:[panel],sources:[{label:'美国数据库20260911.xlsx',locator:'私人文件.xlsx!A1:B7'}]};
+ for(const mode of ['page','report']) {
+  const html=renderChartFigure(resolved,{mode});
+  assert.ok(html.includes('来源：Wind、Bloomberg'));
+  assert.ok(html.includes('数据更新日期：2026-09-11'));
+  assert.ok(!html.includes('.xlsx')&&!html.includes('A1:B7'));
+ }
+});
+test('FX axes retain enough decimals to distinguish nearby exchange rates',()=>{
+ const fx={...panel,unit:'欧元/美元',series:[{...panel.series[0],points:[{period:'2025-01',value:0.861},{period:'2025-02',value:0.863}]}]};
+ const html=renderChartFigure({releaseId:'fx',sourceEdition:'2026-09-11',definition:{chartId:'fx',title:'FX',defaultRange:'all'},panels:[fx],sources:[]},{mode:'report'});
+ const axis=html.match(/class="chart-axis">([\s\S]*?)<\/g>/)[1];
+ assert.ok(axis.includes('0.861'));
+});
