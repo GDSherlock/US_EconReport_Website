@@ -1,7 +1,9 @@
 import {indicatorGuides} from '../data/indicator-guides.mjs';
 
-export function getIndicatorGuide(chartId) {
- const guide=indicatorGuides[chartId];
+import {indicatorGuidesEn} from '../data/indicator-guides.en.mjs';
+
+export function getIndicatorGuide(chartId,locale='zh') {
+ const guide=(locale==='en'?indicatorGuidesEn:indicatorGuides)[chartId];
  if(!guide)throw new Error(`Missing indicator explanation: ${chartId}`);
  return guide;
 }

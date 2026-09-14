@@ -1,0 +1,6 @@
+---
+import Page from '../../../components/pages/ChartTopicPage.astro';
+import {topics} from '../../../lib/chart-topics';
+export function getStaticPaths(){return topics.map(topic=>({params:{topic:topic.id},props:{topicId:topic.id}}));}
+---
+<Page locale="en" {...Astro.props} />

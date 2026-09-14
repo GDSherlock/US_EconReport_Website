@@ -1,7 +1,4 @@
 ---
-import ReportLayout from '../layouts/ReportLayout.astro';
-import { getReports } from '../lib/reports';
-const [latest] = await getReports();
-if (!latest) throw new Error('No published report. Add a Markdown report with draft: false to src/content/reports/.');
+import Page from '../components/pages/IndexPage.astro';
 ---
-<ReportLayout report={latest} isHome />
+<Page locale="zh" />

@@ -7,6 +7,6 @@ for (const file of files) validateRelease(readRelease(DATA_ROOT,file.slice(0,-5)
 const current=readRelease();
 for(const ref of Object.values(current.charts)) {
  const chart=readObject(DATA_ROOT,ref);
- validateIndicatorGuide(chart,getIndicatorGuide(chart.chartId));
+ for(const locale of ['zh','en'])validateIndicatorGuide(chart,getIndicatorGuide(chart.chartId,locale));
 }
 console.log(`Validated ${files.length} releases; current ${current.releaseId}: ${Object.keys(current.series).length} series, ${Object.keys(current.charts).length} charts.`);

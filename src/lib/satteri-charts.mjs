@@ -8,6 +8,7 @@ export function satteriCharts() {
  // code so a rebuild cannot retain stale report SVG while theme pages use new code.
  const hash=createHash('sha256');
  for(const file of ['chart-render.mjs','chart-geometry.mjs','chart-data.mjs','remark-charts.mjs','satteri-charts.mjs'])hash.update(fs.readFileSync(new URL(file,import.meta.url)));
+ hash.update(fs.readFileSync(new URL('../data/chart-copy.en.mjs',import.meta.url)));
  return {
   name:'macro-report-charts-'+hash.digest('hex').slice(0,16),
   before(root,ctx) {

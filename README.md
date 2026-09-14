@@ -59,3 +59,16 @@
 每幅主题图表下提供“指标解释与作用”：默认展示简短用途，展开可查看指标含义、变化解读、研究局限，以及派生指标的计算逻辑。解释统一维护在 `src/data/indicator-guides.mjs`，不会改变历史观测或报告引用版本。新增图表或修改关联指标时，必须同步补充解释；构建会检查覆盖范围。定义与方法参考链接用于辅助理解，与图下注明的数据来源分开展示。
 
 开发环境要求 Node.js >=22.19.0。运行 `npm test`、`npm run check` 和 `npm run build` 验证；构建前自动检查全部数据版本。`npm run preview` 启动本地构建预览。数据批次写入和本地构建均不会自动推送或部署。
+
+
+## 中英文版本
+
+中文 URL 保持不变；英文使用 `/en/`，如 `/en/archive/`、`/en/report/2026-09-11/` 与 `/en/charts/rates/`。语言切换保留同一期报告/同一图表主题，图表锚点保留，报告章节按对应顺序映射。
+
+- 中文报告：`src/content/reports/YYYY-MM-DD.md`（`locale: zh`，旧稿默认 zh）；英文：`src/content/reports/en/YYYY-MM-DD.md`（`locale: en`）。日期是同一期内容的关联键；两者独立编辑，保持章节层级和次序一致。
+- 最新一期以最新已发布中文报告日期为准。英文未发布或 draft 时，对应英文首页/报告页明确提示并链接该期中文；不回退到上一期、不实时机器翻译。英文归档仍列出该期并标注待译。
+- 页面路由为薄入口，复用 `src/components/pages/`、layouts 与所有图表组件。语言 URL 统一由 `src/lib/i18n.mjs` 处理，包括部署子路径。
+- 指标解释分别维护 `src/data/indicator-guides.mjs` 与 `src/data/indicator-guides.en.mjs`。英文图表显示文案在 `src/data/chart-copy.en.mjs`；缺失英文图表文案会使检查/构建失败，避免静默混用语言。
+- 历史序列和 release 只存一份。双语报告 charts 的 chartId、releaseId、range、selectedPeriod 与标记顺序必须相同，只翻译 caption 和 versionNote。
+- 从中文原稿发布时，先整理完整中文再翻译完整英文，逐段复核所有数值、单位换算和条件判断，保持章节顺序；无法完成英文时明确保留缺译状态。详细 Agent Prompt 仍在被忽略的 `docs/Agent_workbook/01_周报正文更新_Prompt.md`。
+- 校验：`npm test`、`npm run check`、`npm run build`、`node scripts/check-chart-routes.mjs`、`node scripts/check-i18n-routes.mjs`。部署子路径构建可传 `--base /subpath/` 给两个路由校验脚本。

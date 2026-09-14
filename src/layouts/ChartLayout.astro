@@ -1,19 +1,21 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { href } from '../lib/reports';
+import {localePath,textFor} from '../lib/i18n.mjs';
 import '../styles/charts.css';
-interface Props {title:string; description:string; topic?:string; charts?:{chartId:string;title:string}[];}
-const {title,description,topic,charts=[]}=Astro.props;
+interface Props {locale?:string;title:string; description:string; topic?:string; charts?:{chartId:string;title:string}[];}
+const {title,description,topic,charts=[],locale='zh'}=Astro.props;
+const t=(zh:string,en:string)=>textFor(locale,zh,en);
+const link=(path='')=>localePath(path,locale,import.meta.env.BASE_URL);
 ---
-<BaseLayout title={title} description={description} active="charts" canonicalPath={href(topic?`charts/${topic}/`:'charts/')}>
+<BaseLayout locale={locale} title={title} description={description} active="charts" canonicalPath={link(topic?`charts/${topic}/`:'charts/')}>
  <main id="main" class="wrap chart-main">
   <header class="chart-page-header">
-   <div class="chart-eyebrow">{topic?<a href={href('charts/')}>数据图表 <span aria-hidden="true">/</span></a>:'研究资料'} <span>DATA & EVIDENCE</span></div>
+   <div class="chart-eyebrow">{topic?<a href={link('charts/')}>{t('数据图表','Charts')} <span aria-hidden="true">/</span></a>:t('研究资料','Research resources')} <span>DATA & EVIDENCE</span></div>
    <h1>{title}</h1><p>{description}</p>
-   <div class="chart-header-foot"><span>研究的数据与证据层</span><a href={href()}>阅读最新周报 ↗</a></div>
+   <div class="chart-header-foot"><span>{t('研究的数据与证据层','Data and evidence for research')}</span><a href={link()}>{t('阅读最新周报','Read the latest report')} ↗</a></div>
   </header>
   <div class:list={['chart-page-body',{'has-chart-toc':charts.length>0}]}>
-   {charts.length>0&&<aside class="chart-toc"><details open><summary>本页图表</summary><nav aria-label="本页图表">{charts.map((chart,i)=><a href={`#${chart.chartId}`}><span>{String(i+1).padStart(2,'0')}</span>{chart.title}</a>)}</nav><a class="chart-all-topics" href={href('charts/')}>全部主题 ↗</a></details></aside>}
+   {charts.length>0&&<aside class="chart-toc"><details open><summary>{t('本页图表','On this page')}</summary><nav aria-label={t('本页图表','On this page')}>{charts.map((chart,i)=><a href={`#${chart.chartId}`}><span>{String(i+1).padStart(2,'0')}</span>{chart.title}</a>)}</nav><a class="chart-all-topics" href={link('charts/')}>{t('全部主题','All topics')} ↗</a></details></aside>}
    <div class="chart-content"><slot /></div>
   </div>
  </main>

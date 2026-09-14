@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {localePath,textFor} from '../../lib/i18n.mjs';
+const {locale='zh'}=Astro.props;
+const t=(zh:string,en:string)=>textFor(locale,zh,en);
+const link=(path='')=>localePath(path,locale,import.meta.env.BASE_URL);
+---
+<BaseLayout locale={locale} title={t('未找到报告','Report not found')} description={t('该报告地址不存在。','This report address does not exist.')}>
+ <main id="main" class="wrap not-found"><span>404</span><h1>{t('这份报告不在书架上。','This report is not on the shelf.')}</h1><p>{t('可以返回最新周报，或在研究归档中查找。','Read the latest report or browse the research archive.')}</p><a href={link()}>{t('阅读最新周报','Latest report')} →</a><a href={link('archive/')}>{t('研究归档','Research archive')} →</a></main>
+</BaseLayout>

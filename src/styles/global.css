@@ -1108,3 +1108,37 @@ h1,h2,h3,p {
     color:inherit!important
   }
 }
+
+/* The English edition shares the editorial system, with natural Latin text spacing. */
+.language-picker { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; font: 11px/1.5 var(--sans); }
+.language-current { color: var(--ink); font-weight: 500; }
+.language-divider { color: var(--faint); }
+.site-nav .language-switch { display: inline; height: auto; padding: 8px 0; color: var(--muted); }
+.site-nav .language-switch:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+.site-nav .language-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+html[lang="en"] .brand-name { font-family: Georgia, serif; letter-spacing: -1px; font-size: 34px; }
+html[lang="en"] h1, html[lang="en"] h2, html[lang="en"] h3 { letter-spacing: normal; }
+html[lang="en"] .report-header h1 { max-width: 1000px; line-height: 1.18; }
+html[lang="en"] .prose { line-height: 1.85; }
+html[lang="en"] .site-footer { flex-wrap: wrap; gap: 16px; }
+.translation-pending { padding: 65px 0 100px; max-width: 760px; }
+.translation-pending h1 { font: 500 42px/1.2 var(--serif); }
+.translation-pending p { line-height: 1.9; color: var(--muted); }
+.translation-pending a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+@media(max-width:800px){
+ .site-header { flex-wrap: wrap; gap: 16px; }
+ .site-nav { flex-wrap: wrap; }
+ html[lang="en"] .report-header-bottom { gap: 15px; flex-wrap: wrap; }
+}
+@media(max-width:480px){
+ html[lang="en"] .brand-name { font-size: 29px; }
+ .site-nav { gap: 15px; }
+ .language-picker { gap: 6px; font-size: 10px; }
+ .translation-pending h1 { font-size: 32px; }
+}
+@media(max-width:600px){
+ .site-header { height: auto; min-height: 112px; padding-top: 20px; gap: 12px; }
+ .site-nav { width: 100%; height: 44px; flex-wrap: nowrap; }
+ .site-nav a { height: 44px; }
+ .site-nav .language-picker { margin-left: auto; }
+}

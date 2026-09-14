@@ -7,3 +7,13 @@ export const topics = [
  {id:'housing',title:'房地产',description:'将住房成交、库存和按揭利率放在各自的历史背景中，观察需求与融资约束。',coverage:'成屋销售 · 库存 · 按揭利率'},
  {id:'financial-conditions',title:'金融条件',description:'查阅金融状况、市场波动、美元指数与主要货币汇率的历史序列，辅助理解研究中的风险环境。',coverage:'金融状况 · 金融压力 · MOVE / VIX · 美元与汇率'},
 ];
+const english = [
+ ['Liquidity','Follow Federal Reserve liabilities, Treasury cash and reverse repos to study the scale, composition and weekly changes in liquidity.','Liquidity · TGA · Reverse repos'],
+ ['Rates & yield curves','Compare short-term funding, the Treasury term structure and international yield spreads across maturities and markets.','SOFR / OIS · Treasury curve · Real yields · International spreads'],
+ ['Growth & demand','Combine quarterly output, business surveys and weekly activity to study growth across time horizons.','Real GDP · ISM · High-frequency activity'],
+ ['Inflation & costs','Read consumer prices, inflation expectations and supply-chain pressure alongside the historical evidence.','CPI / PCE · Expectations · Supply chains'],
+ ['Employment & wages','Examine payroll gains, unemployment, wages and benefit claims to understand labor-market quantities and prices.','Payrolls · Unemployment · Wages · Claims'],
+ ['Housing','Put home sales, inventory and mortgage rates in historical context to study demand and financing constraints.','Existing-home sales · Inventory · Mortgages'],
+ ['Financial conditions','Explore financial conditions, volatility, dollar indices and exchange rates as context for the research risk outlook.','Financial conditions · Stress · MOVE / VIX · Dollar & FX'],
+];
+export function getTopics(locale = 'zh') {return topics.map((topic,i)=>locale==='en'?{...topic,title:english[i][0],description:english[i][1],coverage:english[i][2]}:topic);}

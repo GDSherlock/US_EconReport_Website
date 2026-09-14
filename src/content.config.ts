@@ -6,6 +6,7 @@ import { isISODate } from './lib/report-utils.mjs';
 const reports = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/reports' }),
   schema: z.object({
+    locale: z.enum(['zh', 'en']).default('zh'),
     title: z.string().min(1),
     date: z.string().refine(isISODate, 'Use a real calendar date in YYYY-MM-DD format'),
     description: z.string().min(1),

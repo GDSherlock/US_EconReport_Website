@@ -1,0 +1,112 @@
+---
+import { textFor } from '../../lib/i18n.mjs';
+const {locale='zh'}=Astro.props;
+const t=(zh:string,en:string)=>textFor(locale,zh,en);
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const email = 'kkonerlink@gmail.com';
+---
+<BaseLayout locale={locale} title={t('关于与联系','About & contact')} description={t('了解观澜的个人研究定位，联系交流、反馈数据问题，并阅读本站免责声明。','Learn about Guanlan, discuss research, report data issues and read the disclaimer.')}>
+  <main id="main" class="contact-main wrap">
+    <header class="contact-header">
+      <h1>{t('关于与联系','About & contact')}</h1>
+      <p>{t('观澜是一份关注美国宏观经济的个人研究记录，围绕经济数据、流动性与货币政策，持续整理观察与思考。','Guanlan is a personal research record on the US economy, bringing together observations on economic data, liquidity and monetary policy.')}</p>
+    </header>
+
+    <section class="contact-section" aria-labelledby="contact-title">
+      <h2 id="contact-title">{t('联系我','Get in touch')}</h2>
+      <div class="section-content">
+        <p>{t('欢迎就报告内容、数据纠错与研究交流来信。若涉及具体报告，请在邮件中注明报告日期及相关段落。','Comments, data corrections and research discussions are welcome. For a specific report, please include its date and the relevant passage.')}</p>
+        <div class="email-row">
+          <a class="email-link" href={`mailto:${email}`}>{email}</a>
+          <button id="copy-email" type="button" data-email={email} hidden>{t('复制邮箱','Copy email')}</button>
+        </div>
+        <p class="copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+    </section>
+
+    <section id="disclaimer" class="contact-section disclaimer-section" aria-labelledby="disclaimer-title">
+      <h2 id="disclaimer-title">{t('免责声明','Disclaimer')}</h2>
+      <div class="section-content">
+        <section aria-labelledby="research-only">
+          <h3 id="research-only">{t('仅供研究交流，不构成投资建议','For research and discussion, not investment advice')}</h3>
+          <p>{t('本站内容仅供个人研究记录、学习与交流，不构成对任何证券、基金或其他金融产品的投资建议、推荐或交易邀约，也未考虑任何读者的具体投资目标、财务状况与风险承受能力。','This site is a personal record for research, learning and discussion. It does not provide investment advice, recommendations or offers to trade securities, funds or other financial products, and does not consider any reader’s objectives, financial circumstances or risk tolerance.')}</p>
+        </section>
+        <section aria-labelledby="information-timing">
+          <h3 id="information-timing">{t('信息与观点具有时点性','Information and views are time-specific')}</h3>
+          <p>{t('本站力求准确呈现信息，但不保证内容的准确性、完整性或及时性。数据可能被修订，观点仅反映报告发布时的判断，并可能随情况变化而调整。','The site aims to present information accurately but does not guarantee accuracy, completeness or timeliness. Data may be revised. Views reflect judgment at publication and may change as circumstances evolve.')}</p>
+        </section>
+        <section aria-labelledby="investment-risk">
+          <h3 id="investment-risk">{t('投资决策与风险','Investment decisions and risk')}</h3>
+          <p>{t('读者应独立核实相关信息并自行作出判断，必要时咨询具备相应资质的专业人士。历史表现不代表未来结果，任何预测或情景分析均不构成收益承诺。','Readers should verify information independently, exercise their own judgment and consult qualified professionals when needed. Past performance does not indicate future results. Forecasts and scenarios are not promises of returns.')}</p>
+        </section>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('#copy-email');
+  const status = document.querySelector<HTMLElement>('.copy-status');
+  if (button && status) {
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      button.disabled = true;
+      try {
+        await navigator.clipboard.writeText(button.dataset.email!);
+        button.textContent = document.documentElement.lang==='en'?'Copied':'已复制';
+        status.textContent = document.documentElement.lang==='en'?'Email copied.':'邮箱已复制。';
+      } catch {
+        button.textContent = document.documentElement.lang==='en'?'Copy email':'复制邮箱';
+        status.textContent = document.documentElement.lang==='en'?'Unable to copy automatically. Please select and copy the address above.':'暂时无法自动复制，请选中上方邮箱手动复制。';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  .contact-header { padding: 68px 0 44px; border-bottom: 1px solid var(--ink); }
+  h1 { font: 600 54px/1.4 var(--serif); letter-spacing: 2px; margin: 0 0 22px; }
+  .contact-header p { max-width: 680px; margin: 0; color: var(--muted); font-size: 17px; line-height: 1.95; }
+  .contact-section { display: grid; grid-template-columns: 200px minmax(0, 680px); gap: 64px; padding: 38px 0 30px; }
+  h2 { margin: 0; font: 600 23px/1.6 var(--serif); }
+  .section-content { min-width: 0; }
+  .section-content p { font-size: 16px; line-height: 1.95; color: #424940; margin: 0; }
+  .email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 25px; }
+  .email-link { color: var(--accent); font: 25px/1.5 Georgia, serif; overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; text-decoration-color: var(--line); }
+  .email-link:hover { text-decoration-color: var(--accent); }
+  button { font: 12px/1.5 var(--sans); color: var(--muted); border: 0; border-bottom: 1px solid var(--line); background: transparent; padding: 12px 2px; min-height: 44px; cursor: pointer; }
+  button:hover { color: var(--accent); border-color: var(--accent); }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  button:disabled { cursor: progress; }
+  .section-content .copy-status { min-height: 24px; margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .disclaimer-section { border-top: 1px solid var(--line); scroll-margin-top: 30px; }
+  .disclaimer-section .section-content { display: grid; gap: 30px; }
+  h3 { font-size: 17px; font-weight: 600; line-height: 1.7; margin: 0 0 12px; }
+  @media (max-width: 1000px) {
+    .contact-section { grid-template-columns: 165px minmax(0, 680px); gap: 35px; }
+  }
+  @media (max-width: 800px) {
+    .contact-header { padding: 45px 0 32px; }
+    h1 { font-size: 42px; }
+    .contact-header p { font-size: 16px; }
+    .contact-section { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 28px 0 24px; }
+    h2 { font-size: 23px; }
+    .email-link { font-size: 23px; }
+    .disclaimer-section .section-content { gap: 26px; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 35px; }
+    .email-row { gap: 8px 20px; }
+    .email-link { font-size: 22px; }
+  }
+  @media print {
+    .contact-header { padding-top: 24px; }
+    h1 { font-size: 30pt; }
+    .contact-section { grid-template-columns: 120px minmax(0, 1fr); gap: 25px; }
+    .section-content p { font-size: 11pt; }
+    button, .copy-status { display: none; }
+    .disclaimer-section .section-content section { break-inside: avoid; }
+  }
+</style>

@@ -3,6 +3,7 @@ import { renderChartFigure } from './chart-render.mjs';
 
 export default function remarkCharts({base=process.env.PAGES_BASE_PATH??'/'}={}) {
  return (tree,file)=>{
+  const locale=file.data?.astro?.frontmatter?.locale??'zh';
   const declarations=file.data?.astro?.frontmatter?.charts??[];
   const configs=new Map();
   for(const config of declarations) {
@@ -24,7 +25,7 @@ export default function remarkCharts({base=process.env.PAGES_BASE_PATH??'/'}={})
      }
      if(resolved.panels.some(p=>p.type==='yield-curve')&&!config.selectedPeriod)throw new Error('Report yield curve requires selectedPeriod');
      found.add(id);
-     node.value=renderChartFigure(resolved,{...config,mode:'report',instanceId:`report-chart-${id}`,detailHref:`${base.replace(/\/$/,'')}/charts/${resolved.definition.topic}/#${id}`});
+     node.value=renderChartFigure(resolved,{...config,locale,mode:'report',instanceId:`report-chart-${id}`,detailHref:`${base.replace(/\/$/,'')}/${locale==='en'?'en/':''}charts/${resolved.definition.topic}/#${id}`});
     }
    }
    for(const child of node.children??[])visit(child);

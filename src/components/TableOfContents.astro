@@ -1,14 +1,16 @@
 ---
+import {textFor} from '../lib/i18n.mjs';
 import type { MarkdownHeading } from 'astro';
-interface Props { headings: MarkdownHeading[]; }
-const { headings } = Astro.props;
+interface Props { locale?: string; headings: MarkdownHeading[]; }
+const { headings, locale='zh' } = Astro.props;
+const t=(zh:string,en:string)=>textFor(locale,zh,en);
 const chapters = headings.filter(heading => heading.depth === 2);
 ---
 <aside class="toc-rail">
   <details class="toc" open>
-    <summary><span>本期目录</span><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.25" /></svg></summary>
-    <nav aria-label="报告章节">
-      <a class="toc-link overview-link" href="#key-takeaways" data-section="key-takeaways"><span class="toc-number">—</span><span>本周核心判断</span></a>
+    <summary><span>{t('本期目录','Contents')}</span><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.25" /></svg></summary>
+    <nav aria-label={t('报告章节','Report sections')}>
+      <a class="toc-link overview-link" href="#key-takeaways" data-section="key-takeaways"><span class="toc-number">—</span><span>{t('本周核心判断','Key takeaways')}</span></a>
       {chapters.map((chapter, index) => (
         <div class="toc-chapter">
           <a class="toc-link" href={`#${chapter.slug}`} data-section={chapter.slug}><span class="toc-number">{String(index + 1).padStart(2, '0')}</span><span>{chapter.text}</span></a>
@@ -18,7 +20,7 @@ const chapters = headings.filter(heading => heading.depth === 2);
         </div>
       ))}
     </nav>
-    <a class="toc-top" href="#main">返回顶部 <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 13V3M3 8l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
+    <a class="toc-top" href="#main">{t('返回顶部','Back to top')} <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 13V3M3 8l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
   </details>
 </aside>
 <script>
