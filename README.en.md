@@ -1,10 +1,10 @@
-# Guanlan · US Macro Weekly
+# MacroWatch · US Macro Weekly
 
 [中文](./README.md) · **EN**
 
 **Observing the economy. Understanding change.**
 
-Guanlan is a bilingual macroeconomic research site covering the US economy, liquidity, monetary policy and key developments. Each weekly report follows a research argument supported by data and analysis, helping readers understand what changed and what to watch next.
+MacroWatch is a bilingual macroeconomic research site covering the US economy, liquidity, monetary policy and key developments. Each weekly report follows a research argument supported by data and analysis, helping readers understand what changed and what to watch next.
 
 ## Research-first reading
 

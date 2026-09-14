@@ -16,13 +16,13 @@ const canonical = Astro.site ? new URL(canonicalPath ?? Astro.url.pathname, Astr
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#faf9f6" />
-    <title>{title} · {t('观澜','Guanlan')}</title>
+    <title>{title} · {t('观澜','MacroWatch')}</title>
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
     {!contentAvailable && <meta name="robots" content="noindex,follow" />}
     {Astro.site && translationAvailable && <><link rel="alternate" hreflang={locale==='en'?'en':'zh-CN'} href={canonical} /><link rel="alternate" hreflang={other==='en'?'en':'zh-CN'} href={new URL(counterpartPath(canonicalPath??Astro.url.pathname,other,import.meta.env.BASE_URL),Astro.site)} /></>}
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={`${title} · ${t('观澜','Guanlan')}`} />
+    <meta property="og:title" content={`${title} · ${t('观澜','MacroWatch')}`} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content={locale==='en'?'en_US':'zh_CN'} />
     {canonical && <meta property="og:url" content={canonical} />}
@@ -31,8 +31,8 @@ const canonical = Astro.site ? new URL(canonicalPath ?? Astro.url.pathname, Astr
   <body>
     <a class="skip-link" href="#main">{t('跳至正文','Skip to content')}</a>
     <header class="site-header wrap">
-      <a class="brand" href={link()} aria-label={t('观澜，最新周报首页','Guanlan, latest weekly report')}>
-        <span class="brand-name">{t('观澜','Guanlan')}<span class="brand-dot">.</span></span>
+      <a class="brand" href={link()} aria-label={t('观澜，最新周报首页','MacroWatch, latest weekly report')}>
+        <span class="brand-name">{t('观澜','MacroWatch')}<span class="brand-dot">.</span></span>
         <span class="brand-caption">MACRO<br />RESEARCH</span>
       </a>
       <nav class="site-nav" aria-label={t('网站导航','Site navigation')}>
@@ -66,7 +66,7 @@ const canonical = Astro.site ? new URL(canonicalPath ?? Astro.url.pathname, Astr
     </script>
     <slot />
     <footer class="site-footer wrap">
-      <div><a class="footer-brand" href={link()}>{t('观澜','Guanlan')}</a><span class="footer-caption">{t('观察宏观，理解变化。','Observing the economy. Understanding change.')}</span></div>
+      <div><a class="footer-brand" href={link()}>{t('观澜','MacroWatch')}</a><span class="footer-caption">{t('观察宏观，理解变化。','Observing the economy. Understanding change.')}</span></div>
       <span>{t('美国宏观周报','US Macro Weekly')} <span class="footer-divider">/</span> {t('每周研究记录','Weekly research notes')} <span class="footer-divider">/</span> <a href={link('contact/')} aria-current={Astro.url.pathname === link('contact/') ? 'page' : undefined}>{t('关于与联系','About & contact')}</a></span>
     </footer>
   </body>
