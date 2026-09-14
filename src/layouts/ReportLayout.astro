@@ -4,33 +4,43 @@ import { render } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import Takeaways from '../components/Takeaways.astro';
-import { href, formatDate, readingMinutes } from '../lib/reports';
+import { formatDate, readingMinutes, getEdition } from '../lib/reports';
 import '../styles/charts.css';
-interface Props { report: CollectionEntry<'reports'>; isHome?: boolean; }
-const { report, isHome = false } = Astro.props;
+import {localePath,textFor} from '../lib/i18n.mjs';
+interface Props { report: CollectionEntry<'reports'>; isHome?: boolean; locale?: string; }
+const { report: source, isHome = false, locale = 'zh' } = Astro.props;
+const edition=await getEdition(source.data.date,locale);
+const report=edition??source;
+const available=!!edition;
+const counterpart=await getEdition(source.data.date,locale==='en'?'zh':'en');
+const pairedHeadings=counterpart?(await render(counterpart)).headings:[];
+const t=(zh:string,en:string)=>textFor(locale,zh,en);
+const link=(path='')=>localePath(path,locale,import.meta.env.BASE_URL);
 const { Content, headings } = await render(report);
 const { data } = report;
+const anchorMap=Object.fromEntries(headings.map((h,i)=>[h.slug,pairedHeadings[i]?.slug??'main']));
 const [firstLine, ...rest] = data.title.split('，');
 ---
-<BaseLayout title={data.title} description={data.description} active={isHome ? 'latest' : undefined} canonicalPath={href(`report/${data.date}/`)}>
+<BaseLayout locale={locale} contentAvailable={available} translationAvailable={available && !!counterpart} anchorMap={anchorMap} title={available?data.title:t('译文尚未发布','English edition not yet published')} description={available?data.description:'The English edition of this report is not yet available.'} active={isHome ? 'latest' : undefined} canonicalPath={link(`report/${data.date}/`)}>
   <main id="main" class="report-main wrap">
-    <header class="report-header">
-      <div class="report-meta"><span class="report-category">美国宏观周报</span><span class="meta-slash">/</span><time datetime={data.date}>{formatDate(data.date)}</time><span class="reading-time">约 {readingMinutes(report.body ?? '')} 分钟阅读</span></div>
+    {available ? <><header class="report-header">
+      <div class="report-meta"><span class="report-category">{t('美国宏观周报','US Macro Weekly')}</span><span class="meta-slash">/</span><time datetime={data.date}>{formatDate(data.date,locale)}</time><span class="reading-time">{t('约 ','')}{readingMinutes(report.body ?? '')}{t(' 分钟阅读',' min read')}</span></div>
       <h1>{rest.length ? <>{firstLine}，<br />{rest.join('，')}</> : data.title}</h1>
       <p class="report-deck">{data.description}</p>
-      <div class="report-header-bottom"><span>流动性 <span>·</span> 经济基本面 <span>·</span> 货币政策</span><a href="#key-takeaways">阅读本期 <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v11M3 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.25"/></svg></a></div>
+      <div class="report-header-bottom"><span>{t('流动性','Liquidity')} <span>·</span> {t('经济基本面','Fundamentals')} <span>·</span> {t('货币政策','Monetary policy')}</span><a href="#key-takeaways">{t('阅读本期','Read this issue')} <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v11M3 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.25"/></svg></a></div>
     </header>
     <div class="reading-layout">
-      <TableOfContents headings={headings} />
-      <article class="report-article" aria-label={`${formatDate(data.date)}美国宏观周报`}>
-        <Takeaways items={data.takeaways} />
+      <TableOfContents headings={headings} locale={locale} />
+      <article class="report-article" aria-label={`${formatDate(data.date,locale)}${t('美国宏观周报',' US Macro Weekly')}`}>
+        <Takeaways items={data.takeaways} locale={locale} />
         <div class="prose"><Content /></div>
-        {data.focus && <section class="next-focus" aria-labelledby="next-focus-title"><h2 id="next-focus-title">接下来关注</h2><p>{data.focus}</p></section>}
-        <div class="report-end"><span>本期完</span><span class="end-rule"></span><time datetime={data.date}>{data.date.replaceAll('-', '.')}</time></div>
-        <p class="report-disclaimer"><a href={href('contact/#disclaimer')}>仅供研究交流，不构成投资建议。</a></p>
-        <nav class="report-bottom-nav" aria-label="报告阅读导航"><a href={href('archive/')}>浏览研究归档 <span aria-hidden="true">↗</span></a><a href="#main">返回顶部 ↑</a></nav>
+        {data.focus && <section class="next-focus" aria-labelledby="next-focus-title"><h2 id="next-focus-title">{t('接下来关注','What to watch')}</h2><p>{data.focus}</p></section>}
+        <div class="report-end"><span>{t('本期完','End of report')}</span><span class="end-rule"></span><time datetime={data.date}>{data.date.replaceAll('-', '.')}</time></div>
+        <p class="report-disclaimer"><a href={link('contact/#disclaimer')}>{t('仅供研究交流，不构成投资建议。','For research and discussion only. Not investment advice.')}</a></p>
+        <nav class="report-bottom-nav" aria-label={t('报告阅读导航','Report navigation')}><a href={link('archive/')}>{t('浏览研究归档','Browse the archive')} <span aria-hidden="true">↗</span></a><a href="#main">{t('返回顶部','Back to top')} ↑</a></nav>
       </article>
     </div>
+    </> : <section class="translation-pending"><p class="report-category">US Macro Weekly · {formatDate(source.data.date,locale)}</p><h1>English edition not yet published</h1><p>This issue is available in Chinese. Its English edition will appear here when published.</p><a href={localePath(`report/${source.data.date}/`,'zh',import.meta.env.BASE_URL)}>Read this issue in Chinese ↗</a></section>}
   </main>
 </BaseLayout>
 <style>

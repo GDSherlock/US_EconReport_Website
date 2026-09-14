@@ -1,43 +1,73 @@
 ---
 import '../styles/global.css';
+import {localePath,counterpartPath,textFor} from '../lib/i18n.mjs';
 import { href } from '../lib/reports';
-interface Props { title: string; description: string; active?: 'latest' | 'archive' | 'charts'; canonicalPath?: string; }
-const { title, description, active, canonicalPath } = Astro.props;
+interface Props { title: string; description: string; active?: 'latest' | 'archive' | 'charts'; canonicalPath?: string; locale?: string; translationAvailable?: boolean; contentAvailable?: boolean; anchorMap?: Record<string,string>; }
+const { title, description, active, canonicalPath, locale = 'zh', translationAvailable = true, contentAvailable = true, anchorMap = {} } = Astro.props;
+const t=(zh:string,en:string)=>textFor(locale,zh,en);
+const link=(path='')=>localePath(path,locale,import.meta.env.BASE_URL);
+const other=locale==='en'?'zh':'en';
+const alternate=counterpartPath(Astro.url.pathname,other,import.meta.env.BASE_URL);
 const canonical = Astro.site ? new URL(canonicalPath ?? Astro.url.pathname, Astro.site) : undefined;
 ---
 <!doctype html>
-<html lang="zh-CN">
+<html lang={locale === 'en' ? 'en' : 'zh-CN'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#faf9f6" />
-    <title>{title} · 观澜</title>
+    <title>{title} · {t('观澜','MacroWatch')}</title>
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
+    {!contentAvailable && <meta name="robots" content="noindex,follow" />}
+    {Astro.site && translationAvailable && <><link rel="alternate" hreflang={locale==='en'?'en':'zh-CN'} href={canonical} /><link rel="alternate" hreflang={other==='en'?'en':'zh-CN'} href={new URL(counterpartPath(canonicalPath??Astro.url.pathname,other,import.meta.env.BASE_URL),Astro.site)} /></>}
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={`${title} · 观澜`} />
+    <meta property="og:title" content={`${title} · ${t('观澜','MacroWatch')}`} />
     <meta property="og:description" content={description} />
-    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:locale" content={locale==='en'?'en_US':'zh_CN'} />
     {canonical && <meta property="og:url" content={canonical} />}
     <link rel="icon" type="image/svg+xml" href={href('favicon.svg')} />
   </head>
   <body>
-    <a class="skip-link" href="#main">跳至正文</a>
+    <a class="skip-link" href="#main">{t('跳至正文','Skip to content')}</a>
     <header class="site-header wrap">
-      <a class="brand" href={href()} aria-label="观澜，最新周报首页">
-        <span class="brand-name">观澜<span class="brand-dot">.</span></span>
+      <a class="brand" href={link()} aria-label={t('观澜，最新周报首页','MacroWatch, latest weekly report')}>
+        <span class="brand-name">{t('观澜','MacroWatch')}<span class="brand-dot">.</span></span>
         <span class="brand-caption">MACRO<br />RESEARCH</span>
       </a>
-      <nav class="site-nav" aria-label="网站导航">
-        <a href={href()} aria-current={active === 'latest' ? 'page' : undefined}>最新周报</a>
-        <a href={href('archive/')} aria-current={active === 'archive' ? 'page' : undefined}>研究归档 <span class="nav-en">Archive</span></a>
-        <a href={href('charts/')} aria-current={active === 'charts' ? 'page' : undefined}>数据图表</a>
+      <nav class="site-nav" aria-label={t('网站导航','Site navigation')}>
+        <a href={link()} aria-current={active === 'latest' ? 'page' : undefined}>{t('最新周报','Latest report')}</a>
+        <a href={link('archive/')} aria-current={active === 'archive' ? 'page' : undefined}>{t('研究归档','Archive')}</a>
+        <a href={link('charts/')} aria-current={active === 'charts' ? 'page' : undefined}>{t('数据图表','Charts')}</a>
+        <div class="language-picker" role="group" aria-label={t('语言','Language')}>
+          {locale==='zh' ? <span class="language-current" lang="zh-CN" aria-current="true">中文</span> : <a class="language-switch" href={alternate} lang="zh-CN" hreflang="zh-CN" data-anchor-map={JSON.stringify(anchorMap)} aria-label="Read this content in Chinese">中文</a>}
+          <span class="language-divider" aria-hidden="true">·</span>
+          {locale==='en' ? <span class="language-current" lang="en" aria-current="true">EN</span> : <a class="language-switch" href={alternate} lang="en" hreflang="en" data-anchor-map={JSON.stringify(anchorMap)} aria-label="切换到此内容的英文版">EN</a>}
+        </div>
       </nav>
     </header>
+
+    <script is:inline>
+      // Initialize beside the navigation, before parsing the longer research content.
+      (() => {
+        const switcher = document.querySelector('.language-switch');
+        if (!switcher) return;
+        const base = switcher.getAttribute('href');
+        const anchors = JSON.parse(switcher.dataset.anchorMap || '{}');
+        const update = () => {
+          let hash = location.hash.slice(1);
+          try { hash = decodeURIComponent(hash); } catch { /* Preserve malformed incoming fragments safely. */ }
+          switcher.href = base + (hash ? '#' + encodeURIComponent(anchors[hash] || hash) : '');
+        };
+        update();
+        switcher.addEventListener('click', update);
+        window.addEventListener('hashchange', update);
+      })();
+    </script>
     <slot />
     <footer class="site-footer wrap">
-      <div><a class="footer-brand" href={href()}>观澜</a><span class="footer-caption">观察宏观，理解变化。</span></div>
-      <span>美国宏观周报 <span class="footer-divider">/</span> 每周研究记录 <span class="footer-divider">/</span> <a href={href('contact/')} aria-current={Astro.url.pathname === href('contact/') ? 'page' : undefined}>关于与联系</a></span>
+      <div><a class="footer-brand" href={link()}>{t('观澜','MacroWatch')}</a><span class="footer-caption">{t('观察宏观，理解变化。','Observing the economy. Understanding change.')}</span></div>
+      <span>{t('美国宏观周报','US Macro Weekly')} <span class="footer-divider">/</span> {t('每周研究记录','Weekly research notes')} <span class="footer-divider">/</span> <a href={link('contact/')} aria-current={Astro.url.pathname === link('contact/') ? 'page' : undefined}>{t('关于与联系','About & contact')}</a></span>
     </footer>
   </body>
 </html>

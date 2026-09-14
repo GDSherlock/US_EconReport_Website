@@ -1,0 +1,8 @@
+---
+import {getIndicatorGuide,validateIndicatorGuide} from '../lib/indicator-guides.mjs';
+import {renderIndicatorExplanation} from '../lib/indicator-explanation.mjs';
+interface Props { locale?: string; chart: {chartId:string; panels:any[]}; }
+const {chart, locale='zh'}=Astro.props;
+const guide=validateIndicatorGuide(chart,getIndicatorGuide(chart.chartId,locale));
+---
+<Fragment set:html={renderIndicatorExplanation(guide,chart.chartId,locale)} />

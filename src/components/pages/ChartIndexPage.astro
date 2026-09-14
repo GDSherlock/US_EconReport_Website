@@ -1,0 +1,13 @@
+---
+import {localePath,textFor} from '../../lib/i18n.mjs';
+const {locale='zh'}=Astro.props;
+const t=(zh:string,en:string)=>textFor(locale,zh,en);
+const topics=getTopics(locale);
+const link=(path='')=>localePath(path,locale,import.meta.env.BASE_URL);
+import ChartLayout from '../../layouts/ChartLayout.astro';
+import { getTopics } from '../../lib/chart-topics';
+---
+<ChartLayout locale={locale} title={t('数据图表','Data & charts')} description={t('从研究结论回到数据。在七个主题中查阅宏观指标的历史趋势、统计口径与来源，再回到报告理解它们的意义。','Explore the evidence behind the research across seven themes: historical trends, definitions and sources, with context in the weekly reports.')}>
+ <div class="chart-topic-list">{topics.map((topic,i)=><a class="chart-topic-row" href={link(`charts/${topic.id}/`)}><span class="topic-number">{String(i+1).padStart(2,'0')}</span><div><h2>{topic.title}</h2><p>{topic.description}</p><span class="topic-coverage">{topic.coverage}</span></div><span aria-hidden="true" class="topic-arrow">↗</span></a>)}</div>
+ <p class="chart-index-note">{t('图表展示网站已积累的数据。各指标的统计频率与截止时间不同；报告保留其引用的数据版本，本页可查阅最新已导入版本。','Charts use the site’s accumulated history. Frequencies and latest periods vary; reports retain their cited release while these pages show the latest imported data.')}</p>
+</ChartLayout>

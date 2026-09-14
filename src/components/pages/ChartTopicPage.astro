@@ -1,0 +1,15 @@
+---
+const {locale='zh'}=Astro.props;
+const topics=getTopics(locale);
+import ChartLayout from '../../layouts/ChartLayout.astro';
+import {chartText} from '../../data/chart-copy.en.mjs';
+import MacroChart from '../../components/MacroChart.astro';
+import { getTopics } from '../../lib/chart-topics';
+import { DATA_ROOT, readRelease, readObject } from '../../lib/chart-data.mjs';
+const topic=topics.find(t=>t.id===Astro.props.topicId)!;
+const release=readRelease();
+const definitions=Object.values(release.charts).map(ref=>readObject(DATA_ROOT,ref)).filter(d=>d.topic===topic.id);
+---
+<ChartLayout locale={locale} title={topic.title} description={topic.description} topic={topic.id} charts={definitions.map(d=>({...d,title:chartText(d.title,locale)}))}>
+ {definitions.map(d=><MacroChart locale={locale} chartId={d.chartId} releaseId={release.releaseId}/>)}
+</ChartLayout>

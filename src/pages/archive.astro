@@ -1,14 +1,4 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { getReports, href, readingMinutes } from '../lib/reports';
-const reports = await getReports();
-const years = [...new Set(reports.map(report => report.data.date.slice(0, 4)))];
+import Page from '../components/pages/ArchivePage.astro';
 ---
-<BaseLayout title="研究归档" description="按时间浏览观澜美国宏观周报，持续记录经济、流动性与货币政策的变化。" active="archive">
-  <main id="main" class="archive-main wrap">
-    <header class="archive-header"><h1>研究归档</h1><p>每周观察，持续记录。</p><div class="archive-meta"><span>美国宏观周报</span><span>共 {reports.length} 期研究</span></div></header>
-    <div class="archive-library">
-      {years.map(year => <section class="archive-year" aria-labelledby={`year-${year}`}><h2 id={`year-${year}`}>{year}<span>年度研究</span></h2><ol>{reports.filter(r => r.data.date.startsWith(year)).map(report => <li><a class="archive-entry" href={href(`report/${report.data.date}/`)}><time datetime={report.data.date}>{report.data.date.slice(5).replace('-', '.')}</time><div class="archive-entry-content"><h3>{report.data.title}</h3><p>{report.data.description}</p><span class="entry-meta">美国宏观周报<span> / </span>约 {readingMinutes(report.body ?? '')} 分钟阅读</span></div><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.25" /></svg></a></li>)}</ol></section>)}
-    </div>
-  </main>
-</BaseLayout>
+<Page locale="zh" />

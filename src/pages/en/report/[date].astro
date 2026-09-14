@@ -1,0 +1,7 @@
+---
+import ReportLayout from '../../../layouts/ReportLayout.astro';
+import {getReports} from '../../../lib/reports';
+export async function getStaticPaths(){return (await getReports()).map(report=>({params:{date:report.data.date},props:{report}}));}
+const {report}=Astro.props;
+---
+<ReportLayout report={report} locale="en" />

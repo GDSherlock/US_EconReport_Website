@@ -1,0 +1,19 @@
+---
+import { localePath, textFor } from '../../lib/i18n.mjs';
+const {locale='zh'}=Astro.props;
+const t=(zh:string,en:string)=>textFor(locale,zh,en);
+const link=(path='')=>localePath(path,locale,import.meta.env.BASE_URL);
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getReports, readingMinutes, getEdition } from '../../lib/reports';
+const reports = await getReports();
+const entries=await Promise.all(reports.map(async source=>({source,translation:await getEdition(source.data.date,locale)})));
+const years = [...new Set(reports.map(report => report.data.date.slice(0, 4)))];
+---
+<BaseLayout locale={locale} title={t('研究归档','Research archive')} description={t('按时间浏览观澜美国宏观周报，持续记录经济、流动性与货币政策的变化。','Browse weekly research on the US economy, liquidity and monetary policy.')} active="archive">
+  <main id="main" class="archive-main wrap">
+    <header class="archive-header"><h1>{t('研究归档','Research archive')}</h1><p>{t('每周观察，持续记录。','Weekly observations. A continuing record.')}</p><div class="archive-meta"><span>{t('美国宏观周报','US Macro Weekly')}</span><span>{t('共 ','')}{reports.length}{t(' 期研究',' issues')}</span></div></header>
+    <div class="archive-library">
+      {years.map(year => <section class="archive-year" aria-labelledby={`year-${year}`}><h2 id={`year-${year}`}>{year}<span>{t('年度研究','Research')}</span></h2><ol>{entries.filter(r => r.source.data.date.startsWith(year)).map(({source,translation}) => {const report=translation??source;return <li><a class="archive-entry" href={link(`report/${report.data.date}/`)}><time datetime={report.data.date}>{report.data.date.slice(5).replace('-', '.')}</time><div class="archive-entry-content"><h3>{translation?report.data.title:'English edition pending · '+report.data.date}</h3><p>{translation?report.data.description:'Available in Chinese. Open this issue for the original report.'}</p><span class="entry-meta">{t('美国宏观周报','US Macro Weekly')}<span> / </span>{translation?<>{t('约 ','')}{readingMinutes(report.body ?? '')}{t(' 分钟阅读',' min read')}</>:'Translation pending'}</span></div><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.25" /></svg></a></li>})}</ol></section>)}
+    </div>
+  </main>
+</BaseLayout>

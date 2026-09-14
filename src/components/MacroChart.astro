@@ -1,8 +1,12 @@
 ---
 import { DATA_ROOT, resolveChart } from '../lib/chart-data.mjs';
 import { renderChartFigure } from '../lib/chart-render.mjs';
-interface Props { chartId: string; releaseId?: string; }
-const {chartId, releaseId}=Astro.props;
+import IndicatorExplanation from './IndicatorExplanation.astro';
+interface Props { locale?: string; chartId: string; releaseId?: string; }
+const {chartId, releaseId, locale='zh'}=Astro.props;
 const data=resolveChart(DATA_ROOT,releaseId,chartId);
 ---
-<Fragment set:html={renderChartFigure(data,{mode:'page',instanceId:chartId})} />
+<div class="chart-entry">
+ <Fragment set:html={renderChartFigure(data,{locale,mode:'page',instanceId:chartId})} />
+ <IndicatorExplanation locale={locale} chart={data.definition} />
+</div>
