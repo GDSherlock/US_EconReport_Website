@@ -1,0 +1,1 @@
+{"chartId":"payrolls","version":1,"title":"新增非农就业","topic":"labor","defaultRange":"5y","panels":[{"title":"非农就业月增量","seriesIds":["payroll-change"],"unit":"万人","type":"bar","derive":null}],"note":"季调月增量；后续修订存入新版本，旧报告保留原来引用的数据。"}

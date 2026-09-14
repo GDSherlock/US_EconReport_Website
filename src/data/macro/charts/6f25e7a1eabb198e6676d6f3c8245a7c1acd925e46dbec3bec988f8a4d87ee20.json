@@ -1,0 +1,1 @@
+{"chartId":"net-liquidity","version":1,"title":"金融流动性规模","topic":"liquidity","defaultRange":"5y","panels":[{"title":"金融流动性","seriesIds":["fed-liabilities","tga","reverse-repo"],"unit":"百万美元","type":"line","derive":"net-liquidity"}],"note":"按工作簿口径：美联储负债 − TGA − 逆回购。该口径是研究用代理指标。"}

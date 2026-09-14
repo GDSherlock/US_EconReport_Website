@@ -1,0 +1,13 @@
+---
+import ChartLayout from '../../layouts/ChartLayout.astro';
+import MacroChart from '../../components/MacroChart.astro';
+import { topics } from '../../lib/chart-topics';
+import { DATA_ROOT, readRelease, readObject } from '../../lib/chart-data.mjs';
+export function getStaticPaths(){return topics.map(topic=>({params:{topic:topic.id},props:{topic}}));}
+const {topic}=Astro.props;
+const release=readRelease();
+const definitions=Object.values(release.charts).map(ref=>readObject(DATA_ROOT,ref)).filter(d=>d.topic===topic.id);
+---
+<ChartLayout title={topic.title} description={topic.description} topic={topic.id} charts={definitions}>
+ {definitions.map(d=><MacroChart chartId={d.chartId} releaseId={release.releaseId}/>)}
+</ChartLayout>

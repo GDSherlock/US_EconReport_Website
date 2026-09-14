@@ -1,0 +1,1 @@
+{"chartId":"real-yield","version":1,"title":"10年期实际收益率","topic":"rates","defaultRange":"5y","panels":[{"title":"10年 TIPS","seriesIds":["tips-10y"],"unit":"%","type":"line","derive":null}],"note":"使用通胀指数国债收益率，不与事后 CPI 相减。"}

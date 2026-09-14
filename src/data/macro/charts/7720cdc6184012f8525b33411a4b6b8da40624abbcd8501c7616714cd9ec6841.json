@@ -1,0 +1,1 @@
+{"chartId":"financial-stress","version":1,"title":"金融压力","topic":"financial-conditions","defaultRange":"5y","panels":[{"title":"圣路易斯金融压力","seriesIds":["stl-stress"],"unit":"指数","type":"line","derive":null}],"note":"采用周度序列，保留来源的历史口径。"}

@@ -1,0 +1,533 @@
+{
+  "series": [
+    {
+      "seriesId": "international-us-10y",
+      "name": "美国10年期国债收益率",
+      "sheet": "主要国家国债收益率利差",
+      "dateColumn": "H",
+      "valueColumn": "I",
+      "startRow": 4,
+      "headerCell": "I2",
+      "expectedHeader": "美国:国债收益率:10年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "主要国家利差原始同日序列；沿用来源日历，包括来源已有的非交易日记录，不与其他交易日序列拼接"
+    },
+    {
+      "seriesId": "international-de-10y",
+      "name": "德国10年期国债收益率",
+      "sheet": "主要国家国债收益率利差",
+      "dateColumn": "H",
+      "valueColumn": "J",
+      "startRow": 4,
+      "headerCell": "J2",
+      "expectedHeader": "德国:国债收益率:10年期",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "主要国家利差原始同日序列；沿用来源日历，包括来源已有的非交易日记录，不与其他交易日序列拼接"
+    },
+    {
+      "seriesId": "international-jp-10y",
+      "name": "日本10年期国债收益率",
+      "sheet": "主要国家国债收益率利差",
+      "dateColumn": "H",
+      "valueColumn": "K",
+      "startRow": 4,
+      "headerCell": "K2",
+      "expectedHeader": "日本:国债利率:10年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "主要国家利差原始同日序列；沿用来源日历，包括来源已有的非交易日记录，不与其他交易日序列拼接"
+    },
+    {
+      "seriesId": "international-cn-10y",
+      "name": "中国10年期国债收益率",
+      "sheet": "主要国家国债收益率利差",
+      "dateColumn": "H",
+      "valueColumn": "L",
+      "startRow": 4,
+      "headerCell": "L2",
+      "expectedHeader": "中国:中债国债到期收益率:10年",
+      "frequency": "daily",
+      "unit": "%",
+      "adjustment": "unknown",
+      "measure": "主要国家利差原始同日序列；沿用来源日历，包括来源已有的非交易日记录，不与其他交易日序列拼接"
+    },
+    {
+      "seriesId": "dollar-index",
+      "name": "美元指数",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "N",
+      "startRow": 30,
+      "headerCell": "N28",
+      "expectedHeader": "美元指数:周",
+      "frequency": "weekly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "来源周度指数；各指数基期口径独立，不做跨指数绝对值比较"
+    },
+    {
+      "seriesId": "broad-dollar-index",
+      "name": "广义名义美元指数",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "O",
+      "startRow": 30,
+      "headerCell": "O28",
+      "expectedHeader": "名义美元指数:广义:周",
+      "frequency": "weekly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "来源周度指数；各指数基期口径独立，不做跨指数绝对值比较"
+    },
+    {
+      "seriesId": "advanced-dollar-index",
+      "name": "对发达经济体名义美元指数",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "P",
+      "startRow": 30,
+      "headerCell": "P28",
+      "expectedHeader": "名义美元指数:对国外发达经济体:周",
+      "frequency": "weekly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "来源周度指数；各指数基期口径独立，不做跨指数绝对值比较"
+    },
+    {
+      "seriesId": "emerging-dollar-index",
+      "name": "对新兴经济体名义美元指数",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "Q",
+      "startRow": 30,
+      "headerCell": "Q28",
+      "expectedHeader": "名义美元指数:对新兴市场经济体:周",
+      "frequency": "weekly",
+      "unit": "指数",
+      "adjustment": "unknown",
+      "measure": "来源周度指数；各指数基期口径独立，不做跨指数绝对值比较"
+    },
+    {
+      "seriesId": "usd-eur",
+      "name": "美元兑欧元",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "R",
+      "startRow": 30,
+      "headerCell": "R28",
+      "expectedHeader": "欧元兑美元:倒数:周",
+      "frequency": "weekly",
+      "unit": "欧元/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的欧元数量；保留来源周度观测，来源已是倒数报价，不再取倒数"
+    },
+    {
+      "seriesId": "usd-gbp",
+      "name": "美元兑英镑",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "S",
+      "startRow": 30,
+      "headerCell": "S28",
+      "expectedHeader": "英镑兑美元:倒数:周",
+      "frequency": "weekly",
+      "unit": "英镑/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的英镑数量；保留来源周度观测，来源已是倒数报价，不再取倒数"
+    },
+    {
+      "seriesId": "usd-jpy",
+      "name": "美元兑日元",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "T",
+      "startRow": 30,
+      "headerCell": "T28",
+      "expectedHeader": "美元兑日元:周",
+      "frequency": "weekly",
+      "unit": "日元/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的日元数量；保留来源周度观测"
+    },
+    {
+      "seriesId": "usd-aud",
+      "name": "美元兑澳元",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "U",
+      "startRow": 30,
+      "headerCell": "U28",
+      "expectedHeader": "澳元兑美元:倒数:周",
+      "frequency": "weekly",
+      "unit": "澳元/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的澳元数量；保留来源周度观测，来源已是倒数报价，不再取倒数"
+    },
+    {
+      "seriesId": "usd-cny",
+      "name": "美元兑人民币",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "V",
+      "startRow": 30,
+      "headerCell": "V28",
+      "expectedHeader": "美元兑人民币元:周",
+      "frequency": "weekly",
+      "unit": "人民币/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的人民币数量；保留来源周度观测"
+    },
+    {
+      "seriesId": "usd-cad",
+      "name": "美元兑加元",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "W",
+      "startRow": 30,
+      "headerCell": "W28",
+      "expectedHeader": "美元兑加元:周",
+      "frequency": "weekly",
+      "unit": "加元/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的加元数量；保留来源周度观测"
+    },
+    {
+      "seriesId": "usd-dkk",
+      "name": "美元兑丹麦克朗",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "X",
+      "startRow": 30,
+      "headerCell": "X28",
+      "expectedHeader": "美元兑丹麦克朗:周",
+      "frequency": "weekly",
+      "unit": "丹麦克朗/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的丹麦克朗数量；保留来源周度观测"
+    },
+    {
+      "seriesId": "usd-inr",
+      "name": "美元兑印度卢比",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "Y",
+      "startRow": 30,
+      "headerCell": "Y28",
+      "expectedHeader": "美元兑印度卢比:周",
+      "frequency": "weekly",
+      "unit": "印度卢比/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的印度卢比数量；保留来源周度观测"
+    },
+    {
+      "seriesId": "usd-mxn",
+      "name": "美元兑墨西哥比索",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "Z",
+      "startRow": 30,
+      "headerCell": "Z28",
+      "expectedHeader": "美元兑墨西哥比索:周",
+      "frequency": "weekly",
+      "unit": "墨西哥比索/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的墨西哥比索数量；保留来源周度观测"
+    },
+    {
+      "seriesId": "usd-krw",
+      "name": "美元兑韩元",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "AA",
+      "startRow": 30,
+      "headerCell": "AA28",
+      "expectedHeader": "美元兑韩元:周",
+      "frequency": "weekly",
+      "unit": "韩元/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的韩元数量；保留来源周度观测"
+    },
+    {
+      "seriesId": "usd-thb",
+      "name": "美元兑泰铢",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "AB",
+      "startRow": 30,
+      "headerCell": "AB28",
+      "expectedHeader": "美元兑泰铢:周",
+      "frequency": "weekly",
+      "unit": "泰铢/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的泰铢数量；保留来源周度观测"
+    },
+    {
+      "seriesId": "usd-chf",
+      "name": "美元兑瑞士法郎",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "AC",
+      "startRow": 30,
+      "headerCell": "AC28",
+      "expectedHeader": "美元兑瑞士法郎:周",
+      "frequency": "weekly",
+      "unit": "瑞士法郎/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的瑞士法郎数量；保留来源周度观测"
+    },
+    {
+      "seriesId": "usd-sek",
+      "name": "美元兑瑞典克朗",
+      "sheet": "汇率",
+      "dateColumn": "M",
+      "valueColumn": "AD",
+      "startRow": 30,
+      "headerCell": "AD28",
+      "expectedHeader": "美元兑瑞典克朗:周",
+      "frequency": "weekly",
+      "unit": "瑞典克朗/美元",
+      "adjustment": "unknown",
+      "measure": "1美元对应的瑞典克朗数量；保留来源周度观测"
+    }
+  ],
+  "charts": [
+    {
+      "chartId": "international-yield-spreads",
+      "title": "主要国家10年期国债收益率利差",
+      "topic": "rates",
+      "version": 1,
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "中债 − 美债",
+          "unit": "bp",
+          "type": "line",
+          "seriesIds": [
+            "international-cn-10y",
+            "international-us-10y"
+          ],
+          "derive": "spread-bp"
+        },
+        {
+          "title": "美债 − 德债",
+          "unit": "bp",
+          "type": "line",
+          "seriesIds": [
+            "international-us-10y",
+            "international-de-10y"
+          ],
+          "derive": "spread-bp"
+        },
+        {
+          "title": "美债 − 日债",
+          "unit": "bp",
+          "type": "line",
+          "seriesIds": [
+            "international-us-10y",
+            "international-jp-10y"
+          ],
+          "derive": "spread-bp"
+        }
+      ],
+      "note": "同一日期的10年期收益率相减，再乘100换算为bp。正负方向以各子图标题为准；不对各国休市日自行填值。"
+    },
+    {
+      "chartId": "dollar-indices",
+      "title": "美元指数",
+      "topic": "financial-conditions",
+      "version": 1,
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "美元指数",
+          "unit": "指数",
+          "type": "line",
+          "seriesIds": [
+            "dollar-index"
+          ],
+          "derive": null
+        },
+        {
+          "title": "广义名义美元指数",
+          "unit": "指数",
+          "type": "line",
+          "seriesIds": [
+            "broad-dollar-index"
+          ],
+          "derive": null
+        },
+        {
+          "title": "对发达经济体名义美元指数",
+          "unit": "指数",
+          "type": "line",
+          "seriesIds": [
+            "advanced-dollar-index"
+          ],
+          "derive": null
+        },
+        {
+          "title": "对新兴经济体名义美元指数",
+          "unit": "指数",
+          "type": "line",
+          "seriesIds": [
+            "emerging-dollar-index"
+          ],
+          "derive": null
+        }
+      ],
+      "note": "四条指数分面展示，保留各自口径，不擅自重设基期。"
+    },
+    {
+      "chartId": "fx-major",
+      "title": "美元兑主要货币",
+      "topic": "financial-conditions",
+      "version": 1,
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "1美元兑欧元",
+          "unit": "欧元/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-eur"
+          ],
+          "derive": null
+        },
+        {
+          "title": "1美元兑英镑",
+          "unit": "英镑/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-gbp"
+          ],
+          "derive": null
+        },
+        {
+          "title": "1美元兑日元",
+          "unit": "日元/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-jpy"
+          ],
+          "derive": null
+        },
+        {
+          "title": "1美元兑澳元",
+          "unit": "澳元/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-aud"
+          ],
+          "derive": null
+        },
+        {
+          "title": "1美元兑人民币",
+          "unit": "人民币/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-cny"
+          ],
+          "derive": null
+        },
+        {
+          "title": "1美元兑加元",
+          "unit": "加元/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-cad"
+          ],
+          "derive": null
+        }
+      ],
+      "note": "全部按“1美元兑多少外币”报价；数值上升表示美元相对该货币升值。不同货币分别使用自己的纵轴。"
+    },
+    {
+      "chartId": "fx-europe",
+      "title": "美元兑其他欧洲货币",
+      "topic": "financial-conditions",
+      "version": 1,
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "1美元兑丹麦克朗",
+          "unit": "丹麦克朗/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-dkk"
+          ],
+          "derive": null
+        },
+        {
+          "title": "1美元兑瑞士法郎",
+          "unit": "瑞士法郎/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-chf"
+          ],
+          "derive": null
+        },
+        {
+          "title": "1美元兑瑞典克朗",
+          "unit": "瑞典克朗/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-sek"
+          ],
+          "derive": null
+        }
+      ],
+      "note": "全部按“1美元兑多少外币”报价；数值上升表示美元相对该货币升值。不同货币分别使用自己的纵轴。"
+    },
+    {
+      "chartId": "fx-asia-americas",
+      "title": "美元兑其他亚洲与美洲货币",
+      "topic": "financial-conditions",
+      "version": 1,
+      "defaultRange": "5y",
+      "panels": [
+        {
+          "title": "1美元兑印度卢比",
+          "unit": "印度卢比/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-inr"
+          ],
+          "derive": null
+        },
+        {
+          "title": "1美元兑墨西哥比索",
+          "unit": "墨西哥比索/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-mxn"
+          ],
+          "derive": null
+        },
+        {
+          "title": "1美元兑韩元",
+          "unit": "韩元/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-krw"
+          ],
+          "derive": null
+        },
+        {
+          "title": "1美元兑泰铢",
+          "unit": "泰铢/美元",
+          "type": "line",
+          "seriesIds": [
+            "usd-thb"
+          ],
+          "derive": null
+        }
+      ],
+      "note": "全部按“1美元兑多少外币”报价；数值上升表示美元相对该货币升值。不同货币分别使用自己的纵轴。"
+    }
+  ]
+}

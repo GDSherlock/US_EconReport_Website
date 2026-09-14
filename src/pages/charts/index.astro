@@ -1,0 +1,9 @@
+---
+import ChartLayout from '../../layouts/ChartLayout.astro';
+import { topics } from '../../lib/chart-topics';
+import { href } from '../../lib/reports';
+---
+<ChartLayout title="数据图表" description="从研究结论回到数据。在七个主题中查阅宏观指标的历史趋势、统计口径与来源，再回到报告理解它们的意义。">
+ <div class="chart-topic-list">{topics.map((topic,i)=><a class="chart-topic-row" href={href(`charts/${topic.id}/`)}><span class="topic-number">{String(i+1).padStart(2,'0')}</span><div><h2>{topic.title}</h2><p>{topic.description}</p><span class="topic-coverage">{topic.coverage}</span></div><span aria-hidden="true" class="topic-arrow">↗</span></a>)}</div>
+ <p class="chart-index-note">图表展示网站已积累的数据。各指标的统计频率与截止时间不同；报告保留其引用的数据版本，本页可查阅最新已导入版本。</p>
+</ChartLayout>

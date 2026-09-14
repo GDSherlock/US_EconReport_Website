@@ -1,0 +1,1 @@
+{"chartId":"financial-conditions","version":1,"title":"金融状况","topic":"financial-conditions","defaultRange":"5y","panels":[{"title":"芝加哥联储全国金融状况","seriesIds":["nfci"],"unit":"指数","type":"line","derive":null}],"note":"采用周度序列，不与工作簿月度版本混接。"}

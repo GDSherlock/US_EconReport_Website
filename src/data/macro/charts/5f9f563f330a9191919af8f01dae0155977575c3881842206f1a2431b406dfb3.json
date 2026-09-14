@@ -1,0 +1,1 @@
+{"chartId":"real-gdp","version":1,"title":"实际经济增长","topic":"growth","defaultRange":"5y","panels":[{"title":"实际 GDP 环比折年率","seriesIds":["real-gdp-growth"],"unit":"%","type":"bar","derive":null}],"note":"季度、季调、环比折年率；不等同于同比增长。"}

@@ -1,0 +1,1 @@
+{"chartId":"existing-home-sales","version":1,"title":"成屋销售","topic":"housing","defaultRange":"5y","panels":[{"title":"成屋销售","seriesIds":["home-sales"],"unit":"万套","type":"line","derive":null}],"note":"季调折年数，不是当月实际成交套数。"}

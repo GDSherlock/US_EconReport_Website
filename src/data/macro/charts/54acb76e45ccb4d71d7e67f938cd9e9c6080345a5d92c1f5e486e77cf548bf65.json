@@ -1,0 +1,1 @@
+{"chartId":"pce-inflation","version":1,"title":"个人消费支出价格通胀","topic":"inflation","defaultRange":"5y","panels":[{"title":"PCE 同比","seriesIds":["pce","core-pce"],"unit":"%","type":"line","derive":null}],"note":"同比口径，保留附件精度，不将缺失月份补齐为零。"}

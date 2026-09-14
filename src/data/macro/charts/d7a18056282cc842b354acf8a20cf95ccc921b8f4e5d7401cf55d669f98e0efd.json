@@ -1,0 +1,1 @@
+{"chartId":"housing-inventory","version":1,"title":"住房库存与去化","topic":"housing","defaultRange":"5y","panels":[{"title":"成屋库存","seriesIds":["home-inventory"],"unit":"万套","type":"line","derive":null},{"title":"可供销售月数","seriesIds":["home-months-supply"],"unit":"月","type":"line","derive":null}],"note":"数量和月数分面展示，不共用纵轴。"}

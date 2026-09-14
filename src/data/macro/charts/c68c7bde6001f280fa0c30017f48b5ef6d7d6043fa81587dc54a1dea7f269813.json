@@ -1,0 +1,1 @@
+{"chartId":"unemployment","version":1,"title":"失业率","topic":"labor","defaultRange":"5y","panels":[{"title":"季调失业率","seriesIds":["unemployment-rate"],"unit":"%","type":"line","derive":null}],"note":"月度季调失业率，按附件历史序列展示。"}

@@ -1,0 +1,1 @@
+{"chartId":"weekly-activity","version":1,"title":"高频需求与经济活动","topic":"growth","defaultRange":"5y","panels":[{"title":"红皮书零售周同比","seriesIds":["redbook"],"unit":"%","type":"line","derive":null},{"title":"周度经济指数","seriesIds":["weekly-economic-index"],"unit":"指数","type":"line","derive":null}],"note":"不同口径分面展示，不将两个指标的数值直接比较。"}
