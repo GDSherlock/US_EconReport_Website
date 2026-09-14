@@ -13,7 +13,10 @@ const release=readRelease();
 for(const topic of topics) {
  const html=read(`charts/${topic}`);
  const defs=Object.values(release.charts).map(ref=>readObject(DATA_ROOT,ref)).filter(d=>d.topic===topic);
- for(const d of defs)assert.ok(html.includes(`id="${d.chartId}"`),`Missing chart ${d.chartId}`);
+ for(const d of defs) {
+  assert.ok(html.includes(`id="${d.chartId}"`),`Missing chart ${d.chartId}`);
+  assert.ok(html.includes(`id="${d.chartId}-explanation-title"`),`Missing indicator explanation ${d.chartId}`);
+ }
 }
 function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]);}
 for(const file of walk(root).filter(f=>f.endsWith('.html'))) {
@@ -32,6 +35,7 @@ for(const file of walk(root).filter(f=>f.endsWith('.html'))) {
 }
 const home=read(''),latest=read('report/2026-09-11'),old=read('report/2026-09-05');
 for(const html of [home,latest]) {
+ assert.ok(!html.includes('class="indicator-explanation"'),'Full indicator guides belong on Chart Pages');
  assert.equal((html.match(/class="macro-chart"/g)??[]).length,3);
  assert.equal((html.match(/class="chart-svg-narrow"/g)??[]).length,3,'Stale cached report graphics');
  assert.ok(!html.includes('<!-- chart:'),'Unrendered report marker');
